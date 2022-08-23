@@ -1,30 +1,27 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-md);
-
-  margin-top: var(--gap-lg);
-}
-
 .c-asset-card {
   display: grid;
   grid-template-columns: auto min-content;
   grid-template-rows: min-content min-content;
 
   &__title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__title, &__value {
     font-size: var(--font-size-text);
     font-weight: 600;
   }
 
-  &__label {
+  &__symbol,
+  &__change {
     font-size: var(--font-size-subtext);
     color: var(--color-bg-subtext);
-    white-space: nowrap;
   }
 
-  &__fiat-price {
+  &__change, &__value {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    justify-content: flex-end;
   }
 }

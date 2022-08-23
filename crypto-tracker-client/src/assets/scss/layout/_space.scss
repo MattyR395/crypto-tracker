@@ -1,0 +1,19 @@
+$gaps: (
+  "xs": var(--gap-xs),
+  "sm": var(--gap-sm),
+  "md": var(--gap-md),
+  "lg": var(--gap-lg),
+  "xl": var(--gap-xl)
+);
+
+.l-space {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  
+  @each $name, $value in $gaps {
+    &--#{$name} {
+      gap: $value
+    }
+  }
+}

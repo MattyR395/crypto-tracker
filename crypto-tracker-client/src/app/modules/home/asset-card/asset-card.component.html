@@ -1,0 +1,13 @@
+<div class="c-card c-asset-card">
+  <h2 class="c-asset-card__title">{{ asset.name }}</h2>
+
+  <div class="c-asset-card__value">
+    <app-currency [value]="holdingValueUsd"></app-currency>
+  </div>
+
+  <div class="c-asset-card__symbol">{{ asset.amount }} {{ asset.symbol }}</div>
+
+  <div class="c-asset-card__change">
+    <app-currency-change [to]="holdingValueUsd" [from]="asset.paidUsd"></app-currency-change>
+  </div>
+</div>

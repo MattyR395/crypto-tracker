@@ -7,8 +7,8 @@ import { Component, HostBinding, Input } from '@angular/core';
 })
 export class CurrencyChangeComponent {
 
-  @Input() startValue: number = 0;
-  @Input() endValue: number = 0;
+  @Input() from: number = 0;
+  @Input() to: number = 0;
   @Input() percentage: boolean = false;
 
   /**
@@ -16,20 +16,20 @@ export class CurrencyChangeComponent {
    */
   @HostBinding('class.is-positive')
   get isPositive(): boolean {
-    return this.startValue <= this.endValue
+    return this.from <= this.to
   }
 
   /**
    * Gets the difference between the total balance and total amount spent.
    */
   get difference(): number {
-    return this.endValue - this.startValue;
+    return this.to - this.from;
   }
 
   /**
    * Gets the difference between the total balance and total amount spent as a percentage.
    */
   get percentageDifference(): number {
-    return Math.abs(this.difference / this.startValue);
+    return Math.abs(this.difference / this.from);
   }
 }

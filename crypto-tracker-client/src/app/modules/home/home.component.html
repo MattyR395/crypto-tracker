@@ -1,3 +1,7 @@
 <app-overview-card></app-overview-card>
 
-<app-my-assets></app-my-assets>
+<h1>My Assets</h1>
+
+<div class="l-space l-space--md">
+  <app-asset-card *ngFor="let asset of assets; trackBy: trackByFn" [asset]="asset"></app-asset-card>
+</div>

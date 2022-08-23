@@ -6,14 +6,14 @@ import { HomeComponent } from './home.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CurrencyModule } from 'src/app/shared/components/currency/currency.module';
-import { MyAssetsComponent } from './my-assets/my-assets.component';
 import { CurrencyChangeModule } from 'src/app/shared/components/currency-change/currency-change.module';
+import { AssetCardComponent } from './asset-card/asset-card.component';
 
 @NgModule({
   declarations: [
     OverviewCardComponent,
     HomeComponent,
-    MyAssetsComponent
+    AssetCardComponent
   ],
   imports: [
     CommonModule,

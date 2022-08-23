@@ -1,18 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppState } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
-import { selectFiatCurrencies } from 'src/app/state/selectors/fiat-currency.selectors';
-import { selectHoldings } from 'src/app/state/selectors/holding.selectors';
-import { selectTokens } from 'src/app/state/selectors/token.selectors';
+import { selectAssets } from 'src/app/state/selectors/holding.selectors';
+import { Asset } from 'src/app/shared/models/asset.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  constructor(private store: Store<AppState>) { }
-  
-  ngOnInit() {
+export class HomeComponent {
+  assets: Asset[] = [];
+
+  constructor(private store: Store<AppState>) {
+    this.store.select(selectAssets).subscribe(assets => this.assets = assets);
+  }
+
+  trackByFn(_index: number, item: Asset) {
+    return item.id;
   }
 }
