@@ -1,4 +1,4 @@
-<div class="c-card c-overview-card" *ngIf="cryptoTokens.length && holdings.length">
+<div class="c-card c-overview-card" *ngIf="cryptoTokens.length && holdings.length && totalSpentUsd">
   <h2 class="s-label">Your balance (GBP)</h2>
   <div class="s-title c-overview-card__balance">
     <app-currency [value]="totalBalanceUsd"></app-currency>

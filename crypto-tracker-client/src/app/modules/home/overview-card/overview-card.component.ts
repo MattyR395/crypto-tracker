@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { selectHoldings } from 'src/app/state/selectors/holding.selectors';
+import { selectHoldings, selectTotalSpentUsd } from 'src/app/state/selectors/holding.selectors';
 import { Holding } from 'src/app/shared/models/holding.model';
 import { AppState, HoldingsState, TokensState } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
@@ -16,7 +16,7 @@ export class OverviewCardComponent implements OnInit {
   /**
    * Gets the total amount spent in USD.
    */
-  totalSpentUsd: number = 0;
+  totalSpentUsd?: number;
 
   get totalBalanceUsd(): number {
     let totalBalance = 0;
@@ -38,10 +38,9 @@ export class OverviewCardComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.store.select(selectHoldings).subscribe((holdings: HoldingsState) => {
-      this.holdings = holdings.items;
-      this.totalSpentUsd = this.holdings.reduce((previous, current) => previous + current.paidUsd, 0);
-    });
+    this.store.select(selectHoldings).subscribe((holdings: HoldingsState) => this.holdings = holdings.items);
+
+    this.store.select(selectTotalSpentUsd).subscribe(totalSpentUsd => this.totalSpentUsd = totalSpentUsd);
 
     this.store.select(selectTokens).subscribe((tokens: TokensState) => this.cryptoTokens = tokens.items);
   }

@@ -27,4 +27,9 @@ export const selectAssets = createSelector(
       }
     });
   }
+);
+
+export const selectTotalSpentUsd = createSelector(
+  selectHoldings,
+  (state: HoldingsState) => state.items.reduce((previous, current) => previous + current.paidUsd, 0)
 )
