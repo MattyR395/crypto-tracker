@@ -9,9 +9,20 @@
         </li>
       </ul>
 
-      <button class="c-header__profile" title="User Menu" aria-label="User Menu">
-        <img src="https://avatars.githubusercontent.com/u/25081953?s=40&v=4" alt="">
+      <button class="c-header__profile" [matMenuTriggerFor]="profileMenu" title="User Menu" aria-label="User Menu">
+        <img *ngIf="auth.user$ | async as user" [src]="user.picture" alt="">
       </button>
+
+      <mat-menu #profileMenu="matMenu" xPosition="before">
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item (click)="auth.logout({ returnTo: document.location.origin })">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
     </nav>
 
     <div class="c-header__overlay is-open" id="slideoutOverlay" [class.is-open]="isSideNavOpen"

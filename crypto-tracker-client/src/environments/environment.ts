@@ -3,9 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
-};
+  production: false,
+  apiUrl: 'http://localhost:3000',
+  auth: {
+    domain: 'dev-5j7zzyze.eu.auth0.com',
+    clientId: 'BMIncmaVHNrdhj9MH06ZHtRkxJIg7yw5',
+    redirectUri: window.location.origin,
 
+    httpInterceptor: {
+      allowedList: ['http://localhost:3000/*'],
+    },
+  }
+};
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { loadFiatCurrencies } from './state/actions/fiat-currency.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './state/app.state';
 import { loadHoldings } from './state/actions/holding.actions';
 import { loadTokens } from './state/actions/token.actions';
+import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,11 @@ export class AppComponent implements OnInit {
 
   isSideNavOpen: boolean = false;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(
+    private store: Store<AppState>,
+    public auth: AuthService,
+    @Inject(DOCUMENT) public document: Document
+  ) { }
 
   /**
    * Toggles whether the sidenav is open or not.
