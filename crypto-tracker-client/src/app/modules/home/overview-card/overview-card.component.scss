@@ -1,0 +1,59 @@
+$overview-details-gap: var(--gap-md);
+
+.c-overview-card {
+  &__balance {
+    font-size: var(--font-size-title);
+    font-weight: 600;
+    margin-bottom: var(--gap-sm);
+
+    sup {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__details {
+    display: flex;
+    gap: $overview-details-gap;
+
+    &__item {
+      margin: 0;
+
+      dt {
+        color: var(--color-bg-subtext);
+        font-size: var(--font-size-subtext);
+        margin-bottom: var(--gap-xs);
+      }
+
+      dd {
+        font-weight: 600;
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      & + & {
+        position: relative;
+
+        &::before {
+          $width: 2px;
+          position: absolute;
+          content: "";
+          width: $width;
+          height: 80%;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: var(--color-bg-divider);
+          position: absolute;
+          inset-inline-start: calc(((#{$overview-details-gap} * -1) * .5) - #{$width / 2});     
+        }
+      }
+    }
+  }
+
+  .is-positive {
+    color: var(--color-success);
+  }
+
+  .is-negative {
+    color: var(--color-danger);
+  } 
+}

@@ -1,0 +1,21 @@
+html, body {
+  height: 100%;
+}
+
+html {
+  font-size: var(--font-size-html);
+  line-height: var(--font-size-html);
+
+  // Prevent scrolling on body as instead, the router-outlet component scrolls.
+  overflow: hidden;
+}
+
+
+body {
+  min-width: 100%; /* NOTE: used for mobile nav - not needed but looks nice */
+  max-width: 100%;
+  font-size: var(--font-size-body);
+  color: var(--color-bg-text);
+  font-family: var(--font-family-primary);
+  background-color: var(--color-bg);
+}

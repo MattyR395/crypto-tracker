@@ -1,0 +1,23 @@
+.l-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-columns: auto;
+
+  gap: var(--gap-md);
+
+  &__col {
+    @for $i from 1 through 12 {
+      &--#{$i} {
+        grid-column: span $i;
+      }
+    }
+
+    @include screen('sm', max) {
+      grid-column: span 12;
+    }
+  }
+
+  &+& {
+    margin-top: var(--gap-md);
+  }
+}

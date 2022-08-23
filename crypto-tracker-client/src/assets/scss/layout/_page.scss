@@ -1,0 +1,22 @@
+.l-page {
+  display: grid;
+  height: 100vh;
+
+  grid-template-rows: min-content auto min-content;
+
+  main {
+    justify-self: center;
+    padding: var(--page-gutter);
+    min-width: 0;
+
+    // Set the width accounting for the gutter size.
+    max-width: calc(var(--main-width) + var(--page-gutter) * 2);
+    width: 100%;
+  }
+
+  >header,
+  >main,
+  >footer {
+    width: 100%;
+  }
+}

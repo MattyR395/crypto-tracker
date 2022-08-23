@@ -1,0 +1,39 @@
+.c-hamburger {
+  $colour: var(--color-header-text);
+
+  width: 34px;
+  color: $colour;
+  text-align: center;
+  font-size: 72%;
+
+  // Button reset
+  padding: 0;
+  border: none;
+  background: transparent;
+
+  &__bars {
+    &:after, &:before, div {
+      background-color: $colour;
+      border-radius: 3px;
+      content: '';
+      display: block;
+      height: 3px;
+      margin: 6px 0;
+      transition: var(--transition-main);
+    }
+  }
+
+  &.is-open {
+    .c-hamburger__bars {
+      &::before {
+        transform: translateY(9px) rotate(135deg);
+      }
+      &::after {
+        transform: translateY(-9px) rotate(-135deg);
+      }
+      div {
+        transform: scale(0);
+      }
+    }
+  }
+}

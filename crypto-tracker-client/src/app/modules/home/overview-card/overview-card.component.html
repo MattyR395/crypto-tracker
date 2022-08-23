@@ -1,0 +1,30 @@
+<div class="c-card c-overview-card" *ngIf="cryptoTokens.length && holdings.length">
+  <h2 class="s-label">Your balance (GBP)</h2>
+  <div class="s-title c-overview-card__balance">
+    <app-currency [value]="totalBalanceUsd"></app-currency>
+  
+    <sup [ngClass]="isPositive ? 'is-positive' : 'is-negative'">
+      <mat-icon aria-hidden="false">{{ isPositive ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon><!--
+      -->{{ percentageDifference | percent }}
+    </sup>
+  </div>
+  
+  <div class="c-overview-card__details">
+    <dl class="c-overview-card__details__item">
+      <dt>Total Spent</dt>
+      <dd>
+        <app-currency [value]="totalSpentUsd"></app-currency>
+      </dd>
+    </dl>
+  
+    <dl class="c-overview-card__details__item">
+      <dt>Change</dt>
+      <dd [ngClass]="isPositive ? 'is-positive' : 'is-negative'">   
+        {{ (difference >= 0 ? '+' : '') }}<app-currency [value]="difference"></app-currency>
+      </dd>
+    </dl>
+  </div>  
+</div>
+
+
+

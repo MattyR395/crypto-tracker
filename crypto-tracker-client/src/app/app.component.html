@@ -1,0 +1,32 @@
+<header class="c-header">
+  <div class="c-header__top-ribbon">
+    <a routerLink="/" class="c-header__logo">CRYPTO_TRACKER_</a>
+
+    <nav class="c-header__nav" [class.is-open]="isSideNavOpen">
+      <ul>
+        <li>
+          <a routerLink="/" routerLinkActive="is-active">Portfolio</a>
+        </li>
+      </ul>
+
+      <button class="c-header__profile" title="User Menu" aria-label="User Menu">
+        <img src="https://avatars.githubusercontent.com/u/25081953?s=40&v=4" alt="">
+      </button>
+    </nav>
+
+    <div class="c-header__overlay is-open" id="slideoutOverlay" [class.is-open]="isSideNavOpen"
+      (click)="closeSideNav()"></div>
+
+    <button class="c-hamburger" (click)="toggleSideNav()" [class.is-open]="isSideNavOpen">
+      <div class="c-hamburger__bars">
+        <div></div>
+      </div>
+      Menu
+    </button>
+
+  </div>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

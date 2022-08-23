@@ -1,0 +1,91 @@
+:root {
+  // Colours
+  --color-primary: #246bb8;
+  --color-primary-600: #205fa3;
+  --color-primary-700: #174678;
+  --color-primary-800: #0f2d4d;
+  --color-primary-900: #071423;
+
+  --color-primary-text: #F4F3F3;
+  --color-primary-subtext: #d5e7ff;
+
+
+  --color-secondary: #6466bd;
+  --color-secondary-600: #5254b5;
+  --color-secondary-700: #3f4195;
+  --color-secondary-800: #303271;
+  --color-secondary-900: #21224d;
+
+  --color-secondary-text: #F4F3F3;
+  --color-secondary-subtext: #d5e7ff;
+
+  --color-bg: #151a24;
+  --color-bg-accent: #1b212e;
+
+  --color-bg-text: #F4F3F3;
+  --color-bg-subtext: #A0ADBB;
+  --color-bg-divider: #2e333e;
+
+  --color-focus: #3473d4;
+
+  --color-success: #29c557;
+  --color-success-text: #fff;
+
+  --color-warning: #e6873a;
+  --color-warning-text: #fff;
+
+  --color-danger: #d34040;
+  --color-danger-text: #fff;
+
+  --color-disabled: #35383d;
+  --color-disabled-text: #c6c6c6;
+
+
+
+  // Spacing
+  --gap-xs: .4rem;
+  --gap-sm: .8rem;
+  --gap-md: 1.4rem;
+  --gap-lg: 3rem;
+  --gap-xl: 6rem;
+
+  --page-gutter: var(--gap-md);
+  --main-width: 800px;
+
+
+  // Typography
+  --font-size-base: 14px;
+  --font-size-body: 100%;
+
+  --font-size-title: 3rem;
+  --font-size-h1: 2.3rem;
+  --font-size-h2: 1.8rem;
+  --font-size-h3: 1.5rem;
+  --font-size-h4: 1.2rem;
+  
+  --font-size-text: 1rem;
+  --font-size-subtext: .875rem;
+
+  --font-family-primary: 'Poppins', sans-serif;
+  --font-family-secondary: var(--font-family-primary);
+
+
+
+  // Effects
+  --box-shadow-main: 0 3px 6px rgba(0,0,0,0.23);
+
+  --transition-delay: 0.3s;
+  --transition-main: all var(--transition-delay) cubic-bezier(.25,.8,.25,1);
+
+  --border-radius-primary: 1rem;
+  --border-radius-secondary: calc(var(--border-radius-primary * .7));
+
+
+  // Header 
+  --color-header-bg: var(--color-bg);
+  --color-header-text: var(--color-bg-text);
+
+  --box-shadow-header: none;
+  --gutter-header-content: var(--page-gutter);
+  --width-header-content: var(--main-width);
+}
