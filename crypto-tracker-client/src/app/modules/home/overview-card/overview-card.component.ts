@@ -12,28 +12,7 @@ import { selectTokens } from 'src/app/state/selectors/token.selectors';
   styleUrls: ['./overview-card.component.scss']
 })
 export class OverviewCardComponent implements OnInit {
-
-  /**
-   * Returns true if the current value is not less than the total amount spent.
-   */
-  get isPositive(): boolean {
-    return this.totalSpentUsd <= this.totalBalanceUsd
-  }
-
-  /**
-   * Gets the difference between the total balance and total amount spent.
-   */
-  get difference(): number {
-    return this.totalBalanceUsd - this.totalSpentUsd;
-  }
-
-  /**
-   * Gets the difference between the total balance and total amount spent as a percentage.
-   */
-  get percentageDifference(): number {
-    return Math.abs((this.totalBalanceUsd - this.totalSpentUsd) / this.totalSpentUsd);
-  }
-
+  
   /**
    * Gets the total amount spent in USD.
    */

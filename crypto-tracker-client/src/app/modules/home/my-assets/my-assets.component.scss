@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+
+  margin-top: var(--gap-lg);
+}
+
+.c-asset-card {
+  display: grid;
+  grid-template-columns: auto min-content;
+  grid-template-rows: min-content min-content;
+
+  &__title {
+    font-size: var(--font-size-text);
+    font-weight: 600;
+  }
+
+  &__label {
+    font-size: var(--font-size-subtext);
+    color: var(--color-bg-subtext);
+    white-space: nowrap;
+  }
+
+  &__fiat-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}

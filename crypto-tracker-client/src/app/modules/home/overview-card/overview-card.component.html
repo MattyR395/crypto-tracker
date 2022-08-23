@@ -3,9 +3,8 @@
   <div class="s-title c-overview-card__balance">
     <app-currency [value]="totalBalanceUsd"></app-currency>
   
-    <sup [ngClass]="isPositive ? 'is-positive' : 'is-negative'">
-      <mat-icon aria-hidden="false">{{ isPositive ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon><!--
-      -->{{ percentageDifference | percent }}
+    <sup>
+      <app-currency-change [startValue]="totalSpentUsd" [endValue]="totalBalanceUsd" [percentage]="true"></app-currency-change>
     </sup>
   </div>
   
@@ -19,8 +18,8 @@
   
     <dl class="c-overview-card__details__item">
       <dt>Change</dt>
-      <dd [ngClass]="isPositive ? 'is-positive' : 'is-negative'">   
-        {{ (difference >= 0 ? '+' : '') }}<app-currency [value]="difference"></app-currency>
+      <dd>   
+        <app-currency-change [startValue]="totalSpentUsd" [endValue]="totalBalanceUsd"></app-currency-change>
       </dd>
     </dl>
   </div>  

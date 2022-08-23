@@ -1,0 +1,7 @@
+:host {
+  color: var(--color-danger);
+
+  &.is-positive {
+    color: var(--color-success);
+  }
+}

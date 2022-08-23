@@ -14,7 +14,6 @@ import { TokenReducer } from './state/reducers/token.reducer';
 import { TokenEffects } from './state/effects/token.effects';
 import { HoldingEffects } from './state/effects/holding.effects';
 import { HoldingReducer } from './state/reducers/holding.reducer';
-import { CurrencyComponent } from './shared/components/currency/currency.component';
 
 @NgModule({
   declarations: [

@@ -25,9 +25,10 @@ export class CurrencyComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.store.select(selectFiatRate(this.defaultCurrencyCode)).subscribe(rate => {
-      if (!rate) throw new Error('Fiat rate not found.');
-      this.fiatRate = rate;
-      this.updateValue()
+      if (rate) {
+        this.fiatRate = rate;
+        this.updateValue()
+      }
     });
   }
 

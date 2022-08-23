@@ -5,9 +5,6 @@ html, body {
 html {
   font-size: var(--font-size-html);
   line-height: var(--font-size-html);
-
-  // Prevent scrolling on body as instead, the router-outlet component scrolls.
-  overflow: hidden;
 }
 
 
