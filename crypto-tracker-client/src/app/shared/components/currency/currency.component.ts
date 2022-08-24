@@ -1,4 +1,4 @@
-import { Component, DEFAULT_CURRENCY_CODE, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DEFAULT_CURRENCY_CODE, Inject, Input, OnInit } from '@angular/core';
 import { AppState } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
 import { selectFiatRate } from 'src/app/state/selectors/fiat-currency.selectors';
@@ -9,12 +9,19 @@ import { FiatCurrency } from '../../models/fiat-currency.model';
   templateUrl: './currency.component.html',
   styleUrls: ['./currency.component.scss']
 })
-export class CurrencyComponent implements OnInit, OnChanges {
+export class CurrencyComponent implements OnInit {
 
-  @Input() value!: number;
+  @Input('value') 
+  set valueUsd(value: number) {
+    this._valueUsd = value;
+
+    // Update the new value if the provided value changes.
+    this.updateValue(value); 
+  }
+
+  private _valueUsd!: number;
 
   newValue: number = 0;
-
   fiatRate?: FiatCurrency;
 
   constructor(
@@ -23,27 +30,21 @@ export class CurrencyComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit(): void {
+    // Get the current fiat rate and update the newValue using this.
     this.store.select(selectFiatRate(this.defaultCurrencyCode)).subscribe(rate => {
       if (rate) {
         this.fiatRate = rate;
-        this.updateValue()
+        this.updateValue(this._valueUsd)
       }
     });
-  }
-
-  // When the input value changes, calculate the currency value.
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['value']) {
-      this.updateValue();
-    }
   }
 
   /**
    * Updates the currency value with the current fiat rate.
    */
-  updateValue(): void {
+  updateValue(valueUsd: number): void {
     if (this.fiatRate) {
-      this.newValue = this.value / this.fiatRate.rateUsd;
+      this.newValue = valueUsd / this.fiatRate.rateUsd;
     }
   }
 }
