@@ -1,4 +1,32 @@
 :root {
+  @include define-color("primary", #246bb8);
+  @include define-color("primary-text", #F4F3F3);
+  @include define-color("primary-subtext", #d5e7ff);
+
+  @include define-color("secondary", #6466bd);
+  @include define-color("secondary-text", #F4F3F3);
+  @include define-color("secondary-subtext", #d5e7ff);
+
+  @include define-color("bg", #151a24);  
+  @include define-color("bg-accent", #F4F3F3);
+  @include define-color("bg-text", #F4F3F3);
+  @include define-color("bg-subtext", #A0ADBB);
+  @include define-color("bg-divider", #2e333e);
+
+  @include define-color("focus", #3473d4);
+
+  @include define-color("success", #29c557);
+  @include define-color("success-text", #fff);
+
+  @include define-color("warning", #e6873a);
+  @include define-color("warning-text", #fff);
+
+  @include define-color("danger", #d34040);
+  @include define-color("danger-text", #fff);
+    
+  @include define-color("disabled", #35383d);
+  @include define-color("disabled-text", #c6c6c6);
+  
   // Colours
   --color-primary: #246bb8;
   --color-primary-600: #205fa3;

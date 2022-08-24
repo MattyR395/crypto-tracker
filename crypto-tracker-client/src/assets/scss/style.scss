@@ -1,6 +1,9 @@
+@import 'mixin/define-color';
+@import 'mixin/screen';
+@import 'functions/color';
+
 @import 'theme/main';
 
-@import 'mixin/screen';
 
 @import 'reset';
 @import 'global';

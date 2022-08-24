@@ -1,0 +1,7 @@
+@function color($prefix, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 0) {
+  @return hsla(calc(var(--#{$prefix}-h) + #{$hue}),
+    calc(var(--#{$prefix}-s) + #{$saturation}),
+    calc(var(--#{$prefix}-l) + #{$lightness}),
+    calc(var(--#{$prefix}-a) + #{$alpha}),
+  );
+}

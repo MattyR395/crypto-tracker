@@ -1,0 +1,6 @@
+@mixin define-color($prefix, $color) {
+  --#{$prefix}-h: #{hue($color)};
+  --#{$prefix}-l: #{lightness($color)};
+  --#{$prefix}-s: #{saturation($color)};
+  --#{$prefix}-a: #{alpha($color)};
+}
