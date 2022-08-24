@@ -8,6 +8,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 import { SettingsDialogComponent } from './shared/components/settings-dialog/settings-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { loadSettings } from './state/actions/settings.actions';
 
 @Component({
   selector: 'app-root',
@@ -55,5 +56,6 @@ export class AppComponent implements OnInit {
     this.store.dispatch(loadFiatCurrencies());
     this.store.dispatch(loadHoldings());
     this.store.dispatch(loadTokens());
+    this.store.dispatch(loadSettings());
   }
 }
