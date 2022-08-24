@@ -1,7 +1,7 @@
 .c-header {
   width: 100%;
-  color: var(--color-header-text);
-  background-color: var(--color-header-bg);
+  color: color("header-text");
+  background-color: color("header-bg");
   display: flex;
   justify-content: center;
   box-shadow: var(--box-shadow-header);
@@ -80,14 +80,14 @@
       }
 
       &.is-active {
-        color: var(--color-secondary-600);
+        color: color("secondary", 0deg, -5%);
       }
 
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: .5rem;
-      color: var(--color-header-text);
+      color: color("header-text");
       padding: 0.6rem 1.2rem;
       position: relative;
       border-radius: 5px;
@@ -102,7 +102,7 @@
     @include screen('md') {
       z-index: 2;
       position: fixed;
-      background: var(--color-header-bg);
+      background: color("header-bg");
       top: 0;
       left: 0;
       bottom: 0;
@@ -140,7 +140,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--color-bg);
+    background-color: color("bg");
     transition: opacity .3s,transform .3s .3s;
     transform: translateY(-100%);
     opacity: 0;

@@ -1,3 +1,5 @@
+@import 'src/assets/scss/functions/color';
+
 .c-asset-card {
   display: grid;
   grid-template-columns: auto min-content;
@@ -17,7 +19,7 @@
   &__symbol,
   &__change {
     font-size: var(--font-size-subtext);
-    color: var(--color-bg-subtext);
+    color: color("bg-subtext");
   }
 
   &__change, &__value {

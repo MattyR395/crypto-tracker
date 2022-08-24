@@ -15,10 +15,10 @@ $theme-primary: (
   900: color("primary", 0deg, -20),
 
   contrast : (
-    50:  color("primary-text"),
-    100: color("primary-text"),
-    200: color("primary-text"),
-    300: color("primary-text"),
+    50:  color("primary-subtext"),
+    100: color("primary-subtext"),
+    200: color("primary-subtext"),
+    300: color("primary-subtext"),
     400: color("primary-text"),
     500: color("primary-text"),
     600: color("primary-text"),
@@ -42,10 +42,10 @@ $theme-accent: (
   900: color("secondary", 0deg, -20),
 
   contrast : (
-    50:  color("secondary-text"),
-    100: color("secondary-text"),
-    200: color("secondary-text"),
-    300: color("secondary-text"),
+    50:  color("secondary-subtext"),
+    100: color("secondary-subtext"),
+    200: color("secondary-subtext"),
+    300: color("secondary-subtext"),
     400: color("secondary-text"),
     500: color("secondary-text"),
     600: color("secondary-text"),
@@ -147,6 +147,7 @@ $theme: (
   background: $mat-dark-theme-background
 );
 
+$typography: mat.define-typography-config($font-family: var(--font-family-primary));
 
-@include mat.core();
+@include mat.core($typography);
 @include mat.all-component-themes($theme);

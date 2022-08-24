@@ -1,5 +1,5 @@
 .c-card {
-  background-color: var(--color-bg-accent);
+  background-color: color("bg-accent");
   padding: var(--gap-md);
   border-radius: var(--border-radius-primary);
 }

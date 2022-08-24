@@ -1,8 +1,10 @@
+@import 'src/assets/scss/functions/color';
+
 :host {
-  color: var(--color-danger);
+  color: color("danger");
 
   &.is-positive {
-    color: var(--color-success);
+    color: color("success");
   }
 
   white-space: nowrap;

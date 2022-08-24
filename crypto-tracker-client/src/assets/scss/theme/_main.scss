@@ -1,4 +1,5 @@
 :root {
+  // Colours
   @include define-color("primary", #246bb8);
   @include define-color("primary-text", #F4F3F3);
   @include define-color("primary-subtext", #d5e7ff);
@@ -8,7 +9,7 @@
   @include define-color("secondary-subtext", #d5e7ff);
 
   @include define-color("bg", #151a24);  
-  @include define-color("bg-accent", #F4F3F3);
+  @include define-color("bg-accent", #1b212e);
   @include define-color("bg-text", #F4F3F3);
   @include define-color("bg-subtext", #A0ADBB);
   @include define-color("bg-divider", #2e333e);
@@ -26,47 +27,6 @@
     
   @include define-color("disabled", #35383d);
   @include define-color("disabled-text", #c6c6c6);
-  
-  // Colours
-  --color-primary: #246bb8;
-  --color-primary-600: #205fa3;
-  --color-primary-700: #174678;
-  --color-primary-800: #0f2d4d;
-  --color-primary-900: #071423;
-
-  --color-primary-text: #F4F3F3;
-  --color-primary-subtext: #d5e7ff;
-
-
-  --color-secondary: #6466bd;
-  --color-secondary-600: #5254b5;
-  --color-secondary-700: #3f4195;
-  --color-secondary-800: #303271;
-  --color-secondary-900: #21224d;
-
-  --color-secondary-text: #F4F3F3;
-  --color-secondary-subtext: #d5e7ff;
-
-  --color-bg: #151a24;
-  --color-bg-accent: #1b212e;
-
-  --color-bg-text: #F4F3F3;
-  --color-bg-subtext: #A0ADBB;
-  --color-bg-divider: #2e333e;
-
-  --color-focus: #3473d4;
-
-  --color-success: #29c557;
-  --color-success-text: #fff;
-
-  --color-warning: #e6873a;
-  --color-warning-text: #fff;
-
-  --color-danger: #d34040;
-  --color-danger-text: #fff;
-
-  --color-disabled: #35383d;
-  --color-disabled-text: #c6c6c6;
 
 
 
@@ -110,8 +70,8 @@
 
 
   // Header 
-  --color-header-bg: var(--color-bg);
-  --color-header-text: var(--color-bg-text);
+  --color-header-bg: color("bg");
+  --color-header-text: color("bg-text");
 
   --box-shadow-header: none;
   --gutter-header-content: var(--page-gutter);

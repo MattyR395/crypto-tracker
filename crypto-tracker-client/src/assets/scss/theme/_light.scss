@@ -1,0 +1,29 @@
+.theme-light {
+  @include define-color("primary", #246bb8);
+  @include define-color("primary-text", #F4F3F3);
+  @include define-color("primary-subtext", #d5e7ff);
+
+  @include define-color("secondary", #6466bd);
+  @include define-color("secondary-text", #F4F3F3);
+  @include define-color("secondary-subtext", #d5e7ff);
+
+  @include define-color("bg", #e7e7e7);  
+  @include define-color("bg-accent", #f9f9f9);
+  @include define-color("bg-text", #393939);
+  @include define-color("bg-subtext", #687585);
+  @include define-color("bg-divider", #e3e1e1);
+
+  @include define-color("focus", #3473d4);
+
+  @include define-color("success", #29c557);
+  @include define-color("success-text", #fff);
+
+  @include define-color("warning", #e6873a);
+  @include define-color("warning-text", #fff);
+
+  @include define-color("danger", #d34040);
+  @include define-color("danger-text", #fff);
+    
+  @include define-color("disabled", #35383d);
+  @include define-color("disabled-text", #c6c6c6);
+}

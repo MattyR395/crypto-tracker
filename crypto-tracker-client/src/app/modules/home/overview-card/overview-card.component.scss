@@ -1,3 +1,5 @@
+@import 'src/assets/scss/functions/color';
+
 $overview-details-gap: var(--gap-md);
 
 .c-overview-card {
@@ -19,7 +21,7 @@ $overview-details-gap: var(--gap-md);
       margin: 0;
 
       dt {
-        color: var(--color-bg-subtext);
+        color: color("bg-subtext");
         font-size: var(--font-size-subtext);
         margin-bottom: var(--gap-xs);
       }
@@ -35,13 +37,12 @@ $overview-details-gap: var(--gap-md);
 
         &::before {
           $width: 2px;
-          position: absolute;
           content: "";
           width: $width;
           height: 80%;
           top: 50%;
           transform: translateY(-50%);
-          background-color: var(--color-bg-divider);
+          background-color: color("bg-divider");
           position: absolute;
           inset-inline-start: calc(((#{$overview-details-gap} * -1) * .5) - #{$width / 2});     
         }
@@ -50,10 +51,10 @@ $overview-details-gap: var(--gap-md);
   }
 
   .is-positive {
-    color: var(--color-success);
+    color: color("success");
   }
 
   .is-negative {
-    color: var(--color-danger);
+    color: color("danger");
   } 
 }
