@@ -1,0 +1,49 @@
+@import 'src/assets/scss/functions/color';
+
+$items-gap: var(--gap-xl);
+$divider-width: 2px;
+
+.c-settings {
+  display: flex;
+  flex-direction: column;
+  gap: $items-gap;
+
+  &__item {
+    gap: var(--gap-md);
+    display: grid;
+    grid-template-columns: auto min-content;
+    position: relative;
+
+    &__title {
+      max-width: 26rem;
+
+      h3 {
+        margin-bottom: .2rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    & + &::before {
+      content: "";
+      height: $divider-width;
+      width: 100%;
+      background-color: color("bg-divider");
+      position: absolute;
+      inset-block-start: calc(((#{$items-gap} * -1) * .5) - #{$divider-width / 2});     
+    }
+  }
+}
+
+mat-dialog-content {
+  padding-top: var(--gap-md);
+  padding-bottom: var(--gap-md);
+  background-color: color("bg-accent");
+
+  border-top: 2px solid color("bg-divider");
+  border-bottom: 2px solid color("bg-divider");
+}

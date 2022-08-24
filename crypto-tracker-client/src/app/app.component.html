@@ -14,7 +14,7 @@
       </button>
 
       <mat-menu #profileMenu="matMenu" xPosition="before">
-        <button mat-menu-item>
+        <button mat-menu-item (click)="openSettingsDialog()">
           <mat-icon>settings</mat-icon>
           <span>Settings</span>
         </button>

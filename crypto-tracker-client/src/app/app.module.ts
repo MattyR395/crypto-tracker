@@ -15,21 +15,27 @@ import { TokenReducer } from './state/reducers/token.reducer';
 import { TokenEffects } from './state/effects/token.effects';
 import { HoldingEffects } from './state/effects/holding.effects';
 import { HoldingReducer } from './state/reducers/holding.reducer';
-import { AuthModule } from '@auth0/auth0-angular';
-import { AuthHttpInterceptor } from '@auth0/auth0-angular';
+import { AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SettingsDialogModule } from './shared/components/settings-dialog/settings-dialog.module';
+import { MatSelectModule } from '@angular/material/select';
+import { SettingsEffects } from './state/effects/settings.effects';
+import { SettingsReducer } from './state/reducers/settings.reducer';
 
 const matModules = [
   MatButtonModule,
   MatIconModule,
   MatMenuModule,
+  MatDialogModule,
+  MatSelectModule
 ]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,12 +46,14 @@ const matModules = [
     StoreModule.forRoot({
       fiatCurrencies: FiatCurrencyReducer,
       tokens: TokenReducer,
-      holdings: HoldingReducer
+      holdings: HoldingReducer,
+      settings: SettingsReducer
     }),
     EffectsModule.forRoot([
       FiatCurrencyEffects,
       TokenEffects,
-      HoldingEffects
+      HoldingEffects,
+      SettingsEffects
     ]),
     AuthModule.forRoot(environment.auth),
   ],

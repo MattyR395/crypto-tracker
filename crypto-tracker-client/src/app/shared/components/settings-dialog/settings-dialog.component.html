@@ -1,0 +1,63 @@
+<h2 mat-dialog-title>Settings</h2>
+<mat-dialog-content>
+
+  <div class="c-settings">
+    <div class="c-settings__item">
+      <div class="c-settings__item__title">
+        <h3>Currency</h3>
+        <p class="s-paragraph">Change the base currency used throughout this app.</p>
+      </div>
+      <div class="c-settings__item__content">
+        <mat-form-field appearance="outline" *ngIf="settings$ | async">
+          <mat-label>Currency</mat-label>
+          <mat-select [value]="(settings$ | async)!.fiatCurrencySymbol">
+            <mat-option *ngFor="let currency of fiatCurrencies$ | async" [value]="currency.symbol">
+              {{ currency.symbol }}
+
+              <ng-container *ngIf="currency.currencySymbol && currency.currencySymbol.length">
+                ({{ currency.currencySymbol }})
+              </ng-container>
+            </mat-option>
+
+          </mat-select>
+        </mat-form-field>        
+      </div>
+    </div>
+
+    <div class="c-settings__item">
+      <div class="c-settings__item__title">
+        <h3>Language</h3>
+      </div>
+      <div class="c-settings__item__content">
+        <mat-form-field appearance="outline">
+          <mat-label>Currency</mat-label>
+          <mat-select>
+            <mat-option [value]="1" >GBP £</mat-option>
+            <mat-option [value]="2" >USD $</mat-option>
+          </mat-select>
+        </mat-form-field> 
+      </div>
+    </div>
+
+    <div class="c-settings__item">
+      <div class="c-settings__item__title">
+        <h3>Theme</h3>
+        <p class="s-paragraph">Choose from a number of themes to personalise your experience!</p>
+      </div>
+      <div class="c-settings__item__content">
+        <mat-form-field appearance="outline">
+          <mat-label>Currency</mat-label>
+          <mat-select>
+            <mat-option [value]="1" >GBP £</mat-option>
+            <mat-option [value]="2" >USD $</mat-option>
+          </mat-select>
+        </mat-form-field>        
+      </div>
+    </div>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Done</button>
+</mat-dialog-actions>

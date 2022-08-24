@@ -147,7 +147,9 @@ $theme: (
   background: $mat-dark-theme-background
 );
 
-$typography: mat.define-typography-config($font-family: var(--font-family-primary));
+$typography: mat.define-typography-config(
+  $font-family: var(--font-family-primary)
+);
 
 @include mat.core($typography);
 @include mat.all-component-themes($theme);

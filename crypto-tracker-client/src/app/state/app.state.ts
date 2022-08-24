@@ -1,5 +1,6 @@
 import { FiatCurrency } from "../shared/models/fiat-currency.model";
 import { Holding } from "../shared/models/holding.model";
+import { Settings } from "../shared/models/settings.model";
 import { Token } from "../shared/models/token.model";
 
 export interface FiatCurrenciesState {
@@ -18,7 +19,8 @@ export interface HoldingsState {
 }
 
 export interface SettingsState {
-  fiatCurrencyId: string;
+  settings: Settings;
+  isLoading: boolean;
 }
 
 export interface AppState {

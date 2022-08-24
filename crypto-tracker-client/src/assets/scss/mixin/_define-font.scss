@@ -1,0 +1,6 @@
+@mixin define-font($name, $size, $weight, $font-family, $line-height) {
+  --font-size-#{$name}: $size;
+  --font-weight-#{$name}: $weight;
+  --font-family-#{$name}: $font-family;
+  --line-height-#{$name}: $line-height;
+}

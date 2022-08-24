@@ -1,10 +1,12 @@
-@import 'mixin/define-color';
 @import 'mixin/screen';
+@import 'mixin/define-color';
+@import 'mixin/define-font';
+
+@import 'functions/font';
 @import 'functions/color';
 
 @import 'theme/main';
 @import 'theme/light';
-
 
 @import 'reset';
 @import 'global';

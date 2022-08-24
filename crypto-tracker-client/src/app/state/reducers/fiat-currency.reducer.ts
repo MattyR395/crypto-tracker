@@ -10,7 +10,10 @@ const initialState: FiatCurrenciesState = {
 const reducer = createReducer(
   initialState,
 
-  on(loadFiatCurrenciesSuccess, (_state, action) => ({ isLoading: false, items: action.fiatCurrencies })),
+  on(loadFiatCurrenciesSuccess, (_state, action) => ({ 
+    isLoading: false, 
+    items: action.fiatCurrencies.filter(item => item.type === 'fiat')
+  })),
   on(loadFiatCurrenciesError, (state) => ({ ...state, isLoading: false })),
   on(loadFiatCurrencies, (state) => ({ ...state, isLoading: true }))
 );

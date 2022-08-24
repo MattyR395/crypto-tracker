@@ -50,6 +50,8 @@
   --font-size-h2: 1.8rem;
   --font-size-h3: 1.5rem;
   --font-size-h4: 1.2rem;
+
+  --line-height-base: 1.4;
   
   --font-size-text: 1rem;
   --font-size-subtext: .875rem;
@@ -57,8 +59,10 @@
   --font-family-primary: 'Poppins', sans-serif;
   --font-family-secondary: var(--font-family-primary);
 
+  @include define-font("body", var(--font-size-body), 400, var(--font-family-primary), var(--line-height-base));
 
 
+  
   // Effects
   --box-shadow-main: 0 3px 6px rgba(0,0,0,0.23);
 

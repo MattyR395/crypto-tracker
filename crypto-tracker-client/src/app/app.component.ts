@@ -6,6 +6,8 @@ import { loadHoldings } from './state/actions/holding.actions';
 import { loadTokens } from './state/actions/token.actions';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
+import { SettingsDialogComponent } from './shared/components/settings-dialog/settings-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
+    private dialog: MatDialog,
     public auth: AuthService,
     @Inject(DOCUMENT) public document: Document
   ) { }
@@ -36,6 +39,16 @@ export class AppComponent implements OnInit {
    */
   closeSideNav() {
     this.isSideNavOpen = false;
+  }  
+
+  /**
+   * Opens the dialog to edit settings.
+   */
+   openSettingsDialog(): void {
+    this.dialog.open(SettingsDialogComponent, {
+      maxWidth: '50rem',
+      width: '100%'
+    });
   }  
 
   ngOnInit(): void {

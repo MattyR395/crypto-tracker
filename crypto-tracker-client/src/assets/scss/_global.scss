@@ -4,15 +4,14 @@ html, body {
 
 html {
   font-size: var(--font-size-base);
-  line-height: 1.4;
+  line-height: var(--line-height-base);
 }
 
 
 body {
   min-width: 100%; /* NOTE: used for mobile nav - not needed but looks nice */
   max-width: 100%;
-  font-size: var(--font-size-body);
+  font: font("body");
   color: color("bg-text");
-  font-family: var(--font-family-primary);
   background-color: color("bg");
 }

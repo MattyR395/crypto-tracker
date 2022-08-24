@@ -3,4 +3,5 @@ export interface FiatCurrency {
   symbol: string;
   currencySymbol: string;
   rateUsd: number;
+  type: string;
 }
