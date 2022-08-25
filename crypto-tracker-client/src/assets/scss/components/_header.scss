@@ -23,12 +23,12 @@
       align-self: center;
     }
 
-    @include screen('md') {
+    @include screen('sm') {
       .c-hamburger {
         z-index: 2;
       }
     }
-    @include screen('md', min) {
+    @include screen('sm', min) {
       .c-hamburger {
         display: none;
       }
@@ -99,10 +99,10 @@
 
     // When the screen is small enough, move all the content off screen and style this
     // to look like a side panel.
-    @include screen('md') {
+    @include screen('sm') {
       z-index: 2;
       position: fixed;
-      background: color("header-bg");
+      background: color("bg-accent");
       top: 0;
       left: 0;
       bottom: 0;
@@ -131,7 +131,7 @@
 
   // Translucent overlay that shows when the side menu is open.
   &__overlay {
-    @include screen('md', min) {
+    @include screen('sm', min) {
       display: none;
     }
 

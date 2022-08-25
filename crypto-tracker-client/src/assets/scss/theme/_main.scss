@@ -74,8 +74,8 @@
 
 
   // Header 
-  --color-header-bg: color("bg");
-  --color-header-text: color("bg-text");
+  --color-header-bg: #{color("bg")};
+  --color-header-text: #{color("bg-text")};
 
   --box-shadow-header: none;
   --gutter-header-content: var(--page-gutter);

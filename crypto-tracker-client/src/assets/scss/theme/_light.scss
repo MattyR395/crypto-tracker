@@ -26,4 +26,8 @@
     
   @include define-color("disabled", #35383d);
   @include define-color("disabled-text", #c6c6c6);
+
+  // Header 
+  --color-header-bg: #{color("bg")};
+  --color-header-text: #{color("bg-text")};
 }

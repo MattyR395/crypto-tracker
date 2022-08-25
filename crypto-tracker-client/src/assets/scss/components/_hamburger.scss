@@ -1,5 +1,5 @@
 .c-hamburger {
-  $colour: color("header-text");
+  $colour: var(--color-header-text);
 
   width: 34px;
   color: $colour;
