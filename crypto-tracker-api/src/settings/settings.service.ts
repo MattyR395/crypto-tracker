@@ -10,7 +10,8 @@ export class SettingsService {
 
   findAll() {
     return {
-      fiatCurrencySymbol: 'GBP'
+      fiatCurrencySymbol: 'GBP',
+      themeId: 0,
     };
   }
 
@@ -19,7 +20,7 @@ export class SettingsService {
   }
 
   update(id: number, updateSettingDto: UpdateSettingDto) {
-    return `This action updates a #${id} setting`;
+    return 1;
   }
 
   remove(id: number) {

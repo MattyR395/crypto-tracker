@@ -10,7 +10,7 @@
       <div class="c-settings__item__content">
         <mat-form-field appearance="outline" *ngIf="settings$ | async">
           <mat-label>Currency</mat-label>
-          <mat-select [value]="(settings$ | async)!.fiatCurrencySymbol">
+          <mat-select cdkFocusInitial [value]="(settings$ | async)!.fiatCurrencySymbol">
             <mat-option *ngFor="let currency of fiatCurrencies$ | async" [value]="currency.symbol">
               {{ currency.symbol }}
 
@@ -26,14 +26,13 @@
 
     <div class="c-settings__item">
       <div class="c-settings__item__title">
-        <h3>Language</h3>
+        <h3>Theme</h3>
       </div>
       <div class="c-settings__item__content">
-        <mat-form-field appearance="outline">
-          <mat-label>Currency</mat-label>
-          <mat-select>
-            <mat-option [value]="1" >GBP £</mat-option>
-            <mat-option [value]="2" >USD $</mat-option>
+        <mat-form-field appearance="outline" *ngIf="settings$ | async">
+          <mat-label>Theme</mat-label>
+          <mat-select [value]="(settings$ | async)!.themeId" (selectionChange)="setTheme($event)">
+            <mat-option *ngFor="let theme of themes" [value]="theme.id" >{{ theme.name }}</mat-option>
           </mat-select>
         </mat-form-field> 
       </div>
@@ -41,7 +40,7 @@
 
     <div class="c-settings__item">
       <div class="c-settings__item__title">
-        <h3>Theme</h3>
+        <h3>Language</h3>
         <p class="s-paragraph">Choose from a number of themes to personalise your experience!</p>
       </div>
       <div class="c-settings__item__content">
@@ -59,5 +58,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Done</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="true">Done</button>
 </mat-dialog-actions>
