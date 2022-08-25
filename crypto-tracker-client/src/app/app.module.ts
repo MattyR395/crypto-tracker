@@ -5,8 +5,9 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FiatCurrencyReducer } from './state/reducers/fiat-currency.reducer';
@@ -20,10 +21,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
-import { SettingsDialogModule } from './shared/components/settings-dialog/settings-dialog.module';
 import { MatSelectModule } from '@angular/material/select';
 import { SettingsEffects } from './state/effects/settings.effects';
 import { SettingsReducer } from './state/reducers/settings.reducer';
+import { SettingsDialogModule } from './shared/components/settings-dialog/settings-dialog.module';
 
 const matModules = [
   MatButtonModule,
@@ -40,6 +41,7 @@ const matModules = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SettingsDialogModule,
     matModules,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -56,6 +58,13 @@ const matModules = [
       SettingsEffects
     ]),
     AuthModule.forRoot(environment.auth),
+    TranslateModule.forRoot({ 
+      loader: { 
+        provide: TranslateLoader, 
+        useFactory: HttpLoaderFactory, 
+        deps: [HttpClient] 
+      } 
+    })
   ],
   providers: [
     {
@@ -71,3 +80,8 @@ const matModules = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

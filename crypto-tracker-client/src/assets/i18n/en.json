@@ -1,0 +1,34 @@
+{
+  "AppTitle": "Crypto Tracker",
+  "AppDescription": "Crypto Tracker is a web application that allows you to track your crypto currency portfolio at a glance.",
+
+  "Nav": {
+    "Portfolio": "Portfolio",
+    "MenuButtonLabel": "Menu",
+    "ProfileButtonLabel": "Profile Menu"
+  },
+
+  "Shared": {
+    "Settings": "Settings",
+    "Logout": "Logout",
+    "Cancel": "Cancel",
+    "Done": "Done"
+  },
+
+  "Home": {
+    "YourBalanceLabel": "Your Balance ({{currencySymbol}})",
+    "TotalSpentLabel": "Total Spent",
+    "AmountChangedLabel": "Change",
+    "MyAssetsTitle": "My Assets"
+  },
+
+  "Settings": {
+    "CurrencyLabel": "Currency",
+    "CurrencyDescription": "Select the base currency you want to use throughout this app.",
+    "ThemeLabel": "Theme",
+    "ThemeDescription": "Personalise your experience by choosing a theme.",
+    "LanguageLabel": "Language",
+    "LanguageDescription": "Updating the language will also change things such as date formatting"
+  }
+
+}

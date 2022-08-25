@@ -1,6 +1,6 @@
 <app-overview-card></app-overview-card>
 
-<h1>My Assets</h1>
+<h1>{{ 'Home.MyAssetsTitle' | translate }}</h1>
 
 <div class="l-space l-space--md">
   <app-asset-card *ngFor="let asset of assets; trackBy: trackByFn" [asset]="asset"></app-asset-card>

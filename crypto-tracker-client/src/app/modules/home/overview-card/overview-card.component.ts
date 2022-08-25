@@ -5,6 +5,8 @@ import { AppState, HoldingsState, TokensState } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
 import { Token } from 'src/app/shared/models/token.model';
 import { selectTokens } from 'src/app/state/selectors/token.selectors';
+import { selectSettings } from 'src/app/state/selectors/settings.selectors';
+import { Settings } from 'src/app/shared/models/settings.model';
 
 @Component({
   selector: 'app-overview-card',
@@ -34,6 +36,7 @@ export class OverviewCardComponent implements OnInit {
 
   holdings: Holding[] = [];
   cryptoTokens: Token[] = [];
+  settings: Settings | undefined;
 
   constructor(private store: Store<AppState>) { }
 
@@ -43,5 +46,7 @@ export class OverviewCardComponent implements OnInit {
     this.store.select(selectTotalSpentUsd).subscribe(totalSpentUsd => this.totalSpentUsd = totalSpentUsd);
 
     this.store.select(selectTokens).subscribe((tokens: TokensState) => this.cryptoTokens = tokens.items);
+
+    this.store.select(selectSettings).subscribe((settings: Settings) => this.settings = settings);
   }
 }

@@ -1,5 +1,7 @@
 <div class="c-card c-overview-card" *ngIf="cryptoTokens.length && holdings.length && totalSpentUsd">
-  <h2 class="s-label">Your balance (GBP)</h2>
+  <h2 class="s-label">
+    {{ 'Home.YourBalanceLabel' | translate : { currencySymbol: settings?.fiatCurrencySymbol} }}
+  </h2>
   <div class="s-title c-overview-card__balance">
     <app-currency [value]="totalBalanceUsd"></app-currency>
   
@@ -10,14 +12,14 @@
   
   <div class="c-overview-card__details">
     <dl class="c-overview-card__details__item">
-      <dt>Total Spent</dt>
+      <dt>{{ 'Home.TotalSpentLabel' | translate }}</dt>
       <dd>
         <app-currency [value]="totalSpentUsd"></app-currency>
       </dd>
     </dl>
   
     <dl class="c-overview-card__details__item">
-      <dt>Change</dt>
+      <dt>{{ 'Home.AmountChangedLabel' | translate }}</dt>
       <dd>   
         <app-currency-change [from]="totalSpentUsd" [to]="totalBalanceUsd"></app-currency-change>
       </dd>

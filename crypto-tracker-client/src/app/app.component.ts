@@ -9,6 +9,7 @@ import { DOCUMENT } from '@angular/common';
 import { SettingsDialogComponent } from './shared/components/settings-dialog/settings-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { loadSettings } from './state/actions/settings.actions';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -24,8 +25,12 @@ export class AppComponent implements OnInit {
     private store: Store<AppState>,
     private dialog: MatDialog,
     public auth: AuthService,
+    private translate: TranslateService,
     @Inject(DOCUMENT) public document: Document
-  ) { }
+  ) {
+    translate.setDefaultLang('en');
+    translate.use('en');
+  }
 
   /**
    * Toggles whether the sidenav is open or not.
