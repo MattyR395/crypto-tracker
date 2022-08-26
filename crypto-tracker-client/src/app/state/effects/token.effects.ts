@@ -5,7 +5,7 @@ import { CryptoPriceService } from "src/app/shared/services/crypto-price/crypto-
 import { editToken, loadTokens, loadTokensError, loadTokensSuccess } from "../actions/token.actions";
 import { of } from "rxjs";
 import { loadHoldingsSuccess } from "../actions/holding.actions";
-import { Holding } from "src/app/shared/models/holding.model";
+import { Holding } from "@models/holding.model";
 
 @Injectable()
 export class TokenEffects {

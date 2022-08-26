@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AppState } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
 import { selectAssets } from 'src/app/state/selectors/holding.selectors';
-import { Asset } from 'src/app/shared/models/asset.model';
+import { Asset } from '@models/asset.model';
 
 @Component({
   selector: 'app-home',

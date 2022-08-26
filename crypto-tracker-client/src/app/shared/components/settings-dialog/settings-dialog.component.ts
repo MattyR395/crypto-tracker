@@ -6,9 +6,9 @@ import { updateTheme } from 'src/app/state/actions/settings.actions';
 import { AppState } from 'src/app/state/app.state';
 import { selectFiatCurrencyItems } from 'src/app/state/selectors/fiat-currency.selectors';
 import { selectSettings } from 'src/app/state/selectors/settings.selectors';
-import { FiatCurrency } from '../../models/fiat-currency.model';
-import { Settings } from '../../models/settings.model';
-import { Theme } from '../../models/theme.model';
+import { FiatCurrency } from '@models/fiat-currency.model';
+import { Settings } from '@models/settings.model';
+import { Theme } from '@models/theme.model';
 import { SettingsService } from '../../services/settings/settings.service';
 
 @Component({

@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ThemeEnum } from '../../enums/theme.enum';
-import { Settings } from '../../models/settings.model';
-import { Theme } from '../../models/theme.model';
+import { ThemeEnum } from '@enums/theme.enum';
+import { Settings } from '@models/settings.model';
+import { Theme } from '@models/theme.model';
 
 const THEMES: Theme[] = [
   {

@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { TokenPrice } from 'src/app/shared/models/token-price.model';
-import { Token } from 'src/app/shared/models/token.model';
+import { TokenPrice } from '@models/token-price.model';
+import { Token } from '@models/token.model';
 
 export const loadTokens = createAction('[Tokens] Load Tokens');
 export const loadTokensError = createAction('[Tokens] Load Tokens Error');

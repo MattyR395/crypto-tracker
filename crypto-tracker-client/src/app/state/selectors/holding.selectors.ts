@@ -1,7 +1,7 @@
 import { AppState, HoldingsState, TokensState } from "../app.state";
 import { createSelector } from '@ngrx/store';
 import { selectTokens } from "./token.selectors";
-import { Holding } from "src/app/shared/models/holding.model";
+import { Holding } from "@models/holding.model";
 
 export const selectHoldings = (state: AppState) => state.holdings;
 

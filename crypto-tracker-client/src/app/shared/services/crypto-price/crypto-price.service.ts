@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
-import { TokenPrice } from '../../models/token-price.model';
-import { Holding } from '../../models/holding.model';
+import { TokenPrice } from '@models/token-price.model';
+import { Holding } from '@models/holding.model';
 
 @Injectable({
   providedIn: 'root'

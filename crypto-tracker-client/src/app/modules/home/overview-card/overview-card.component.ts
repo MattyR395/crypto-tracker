@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { selectHoldings, selectTotalSpentUsd } from 'src/app/state/selectors/holding.selectors';
-import { Holding } from 'src/app/shared/models/holding.model';
+import { Holding } from '@models/holding.model';
 import { AppState, HoldingsState, TokensState } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
-import { Token } from 'src/app/shared/models/token.model';
+import { Token } from '@models/token.model';
 import { selectTokens } from 'src/app/state/selectors/token.selectors';
 import { selectSettings } from 'src/app/state/selectors/settings.selectors';
-import { Settings } from 'src/app/shared/models/settings.model';
+import { Settings } from '@models/settings.model';
 
 @Component({
   selector: 'app-overview-card',

@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { ThemeEnum } from 'src/app/shared/enums/theme.enum';
-import { Settings } from 'src/app/shared/models/settings.model';
+import { ThemeEnum } from '@enums/theme.enum';
+import { Settings } from '@models/settings.model';
 
 export const loadSettings = createAction('[Settings] Load Settings');
 export const loadSettingsError = createAction('[Settings] Load Settings Error');

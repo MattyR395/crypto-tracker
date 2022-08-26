@@ -1,7 +1,7 @@
 import { loadSettings, loadSettingsError, loadSettingsSuccess, updateTheme } from "../actions/settings.actions"
 import { Action, createReducer, on } from '@ngrx/store';
 import { SettingsState } from "../app.state";
-import { ThemeEnum } from "src/app/shared/enums/theme.enum";
+import { ThemeEnum } from "@enums/theme.enum";
 
 const initialState: SettingsState = {
   isLoading: false,

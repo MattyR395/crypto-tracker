@@ -21,7 +21,11 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "paths": { 
+      "@models/*": ["../crypto-tracker-api/src/shared/models/*"], 
+      "@enums/*": ["../crypto-tracker-api/src/shared/enums/*"],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

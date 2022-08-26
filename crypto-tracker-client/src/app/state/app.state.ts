@@ -1,7 +1,7 @@
-import { FiatCurrency } from "../shared/models/fiat-currency.model";
-import { Holding } from "../shared/models/holding.model";
-import { Settings } from "../shared/models/settings.model";
-import { Token } from "../shared/models/token.model";
+import { FiatCurrency } from "@models/fiat-currency.model";
+import { Holding } from "@models/holding.model";
+import { Settings } from "@models/settings.model";
+import { Token } from "@models/token.model";
 
 export interface FiatCurrenciesState {
   items: FiatCurrency[];

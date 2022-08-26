@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Holding } from 'src/app/shared/models/holding.model';
+import { Holding } from '@models/holding.model';
 
 export const loadHoldings = createAction('[Holdings] Load Holdings');
 export const loadHoldingsError = createAction('[Holdings] Load Holdings Error');

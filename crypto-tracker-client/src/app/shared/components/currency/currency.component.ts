@@ -2,7 +2,7 @@ import { Component, DEFAULT_CURRENCY_CODE, Inject, Input, OnInit } from '@angula
 import { AppState } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
 import { selectFiatRate } from 'src/app/state/selectors/fiat-currency.selectors';
-import { FiatCurrency } from '../../models/fiat-currency.model';
+import { FiatCurrency } from '@models/fiat-currency.model';
 
 @Component({
   selector: 'app-currency',

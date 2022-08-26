@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { FiatCurrency } from 'src/app/shared/models/fiat-currency.model';
+import { FiatCurrency } from '@models/fiat-currency.model';
 
 export const loadFiatCurrencies = createAction('[Fiat Currency] Load Fiat Currencies');
 export const loadFiatCurrenciesError = createAction('[Fiat Currency] Load Fiat Currencies Error');

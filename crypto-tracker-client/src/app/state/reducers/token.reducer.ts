@@ -1,7 +1,7 @@
 import { loadTokens, loadTokensError, loadTokensSuccess, editToken } from "../actions/token.actions"
 import { Action, createReducer, on } from '@ngrx/store';
 import { TokensState } from "../app.state";
-import { TokenPrice } from "src/app/shared/models/token-price.model";
+import { TokenPrice } from "@models/token-price.model";
 
 const initialState: TokensState = {
   isLoading: false,
