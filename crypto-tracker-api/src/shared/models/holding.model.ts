@@ -1,5 +1,5 @@
 export interface Holding {
-  id: string;
+  id: number;
   tokenId: string;
   amount: number;
   dateAquired: Date;

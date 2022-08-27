@@ -1,30 +1,28 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable, Scope } from '@nestjs/common';
+import { REQUEST } from '@nestjs/core';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateHoldingDto } from './dto/create-holding.dto';
 import { UpdateHoldingDto } from './dto/update-holding.dto';
+import { Holding } from './entities/holding.entity';
 
-@Injectable()
+@Injectable({ scope: Scope.REQUEST })
 export class HoldingsService {
+  constructor(
+    @InjectRepository(Holding) private holdingsRepository: Repository<Holding>,
+    @Inject(REQUEST) private readonly request: { user: { sub: string } }
+  ) {}
+
   create(createHoldingDto: CreateHoldingDto) {
     return 'This action adds a new holding';
   }
 
-  findAll(): Holding[] {
-    return [
-      {
-        id: 1,
-        tokenId: 'bitcoin',
-        amount: .004,
-        dateAquired: new Date('2019-01-01'),
-        paidUsd: 72.75,
-      },
-      {
-        id: 2,
-        tokenId: 'ethereum',
-        amount: .3,
-        dateAquired: new Date('2019-02-27'),
-        paidUsd: 548.08,
+  findAll(): Promise<Holding[]> {
+    return this.holdingsRepository.find({
+      where: {
+        userId: this.request.user.sub
       }
-    ];
+    });
   }
 
   findOne(id: number) {
@@ -38,12 +36,4 @@ export class HoldingsService {
   remove(id: number) {
     return `This action removes a #${id} holding`;
   }
-}
-
-export interface Holding {
-  id: number;
-  tokenId: string;
-  amount: number;
-  dateAquired: Date;
-  paidUsd: number;
 }

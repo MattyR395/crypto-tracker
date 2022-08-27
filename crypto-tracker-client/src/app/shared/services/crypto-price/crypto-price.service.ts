@@ -61,8 +61,12 @@ export class CryptoPriceService {
 
   getAllHoldings(): Observable<Holding[]> {
     return this.http.get<any>('http://localhost:3000/holdings').pipe(
-      map((response: any) => {
-        return response
+      map((response: Holding[]) => {
+        return response.map(r => ({ 
+          ...r, 
+          amount: parseFloat(`${r.amount}`),
+          paidUsd: parseFloat(`${r.paidUsd}`),
+        }))
       })
     );
   }
