@@ -10,7 +10,7 @@
       <div class="c-settings__item__content">
         <mat-form-field appearance="outline" *ngIf="settings$ | async">
           <mat-label>Currency</mat-label>
-          <mat-select cdkFocusInitial [value]="(settings$ | async)!.fiatCurrencySymbol">
+          <mat-select cdkFocusInitial [value]="(settings$ | async)!.fiatCurrency">
             <mat-option *ngFor="let currency of fiatCurrencies$ | async" [value]="currency.symbol">
               {{ currency.symbol }}
 

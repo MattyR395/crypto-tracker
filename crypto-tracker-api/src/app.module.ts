@@ -6,6 +6,7 @@ import { HoldingsModule } from './holdings/holdings.module';
 import { SettingsModule } from './settings/settings.module';
 import * as dotenv from 'dotenv';
 import { Holding } from './holdings/entities/holding.entity';
+import { Setting } from './settings/entities/setting.entity';
 
 dotenv.config();
 
@@ -20,7 +21,7 @@ dotenv.config();
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Holding],
+      entities: [Holding, Setting],
       synchronize: process.env.NODE_ENV === 'development',
     })
   ],

@@ -1,6 +1,7 @@
 import { ThemeEnum } from "../enums/theme.enum";
 
 export interface Settings {
-  fiatCurrencySymbol: string;
+  fiatCurrency: string;
+  language: string;
   themeId: ThemeEnum;
 }

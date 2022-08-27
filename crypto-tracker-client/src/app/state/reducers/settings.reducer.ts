@@ -6,8 +6,9 @@ import { ThemeEnum } from "@enums/theme.enum";
 const initialState: SettingsState = {
   isLoading: false,
   settings: {
-    fiatCurrencySymbol: '',
+    fiatCurrency: '',
     themeId: ThemeEnum.DARK,
+    language: 'en'
   }
 }
 

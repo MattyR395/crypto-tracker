@@ -1,6 +1,6 @@
 <div class="c-card c-overview-card" *ngIf="cryptoTokens.length && holdings.length && totalSpentUsd">
   <h2 class="s-label">
-    {{ 'Home.YourBalanceLabel' | translate : { currencySymbol: settings?.fiatCurrencySymbol} }}
+    {{ 'Home.YourBalanceLabel' | translate : { currencySymbol: settings?.fiatCurrency} }}
   </h2>
   <div class="s-title c-overview-card__balance">
     <app-currency [value]="totalBalanceUsd"></app-currency>

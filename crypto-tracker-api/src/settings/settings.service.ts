@@ -1,29 +1,37 @@
-import { Injectable } from '@nestjs/common';
-import { CreateSettingDto } from './dto/create-setting.dto';
-import { UpdateSettingDto } from './dto/update-setting.dto';
+import { Inject, Injectable } from '@nestjs/common';
+import { REQUEST } from '@nestjs/core';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { UpdateThemeSettingDto } from './dto/update-theme.dto';
+import { Setting } from './entities/setting.entity';
 
 @Injectable()
 export class SettingsService {
-  create(createSettingDto: CreateSettingDto) {
-    return 'This action adds a new setting';
+
+  constructor(
+    @InjectRepository(Setting) private settingsRepository: Repository<Setting>,
+    @Inject(REQUEST) private readonly request: { user: { sub: string } }
+  ) {}
+
+  /**
+   * Returns all settings for the user.
+   * @returns Setting
+   */
+  findAll(): Promise<Setting> {
+    return this.settingsRepository.findOne({
+      select: ['themeId', 'fiatCurrency', 'language'],
+      where: { userId: this.request.user.sub }
+    });
   }
 
-  findAll() {
-    return {
-      fiatCurrencySymbol: 'GBP',
-      themeId: 0,
-    };
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} setting`;
-  }
-
-  update(id: number, updateSettingDto: UpdateSettingDto) {
-    return 1;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} setting`;
+  /**
+   * Updates the theme setting for the user.
+   * @param updateThemeSettingDto ID of the theme to update to.
+   */
+  updateTheme(updateThemeSettingDto: UpdateThemeSettingDto) {
+    this.settingsRepository.save({
+      userId: this.request.user.sub,
+      themeId: updateThemeSettingDto.themeId,
+    });
   }
 }
