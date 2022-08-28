@@ -17,3 +17,7 @@ export const updateUiScale = createAction('[Settings] Update UI Scale', props<{ 
 export const updateUiScaleError = createAction('[Settings] Update UI Scale Error');
 export const updateUiScaleSuccess = createAction('[Settings] Update UI Scale Success', props<{ uiScaleId: number }>());
 
+export const updateFiatCurrency = createAction('[Settings] Update Fiat Currency', props<{ currencySymbol: string }>());
+export const updateFiatCurrencyError = createAction('[Settings] Update Fiat Currency Error');
+export const updateFiatCurrencySuccess = createAction('[Settings] Update Fiat Currency Success', props<{ currencySymbol: string }>());
+

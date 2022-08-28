@@ -1,1 +1,1 @@
-<ng-container *ngIf="fiatRate">{{ newValue | currency }}</ng-container>
+<ng-container *ngIf="fiatRate">{{ newValue | currency : currencyCode : 'symbol-narrow' }}</ng-container>

@@ -10,7 +10,7 @@
       <div class="c-settings__item__content">
         <mat-form-field appearance="outline">
           <mat-label>Currency</mat-label>
-          <mat-select cdkFocusInitial [formControl]="currencyCtrl" #currencySelect>
+          <mat-select cdkFocusInitial [formControl]="currencyCtrl" #currencySelect (selectionChange)="setCurrency($event)">
             <mat-option>
               <ngx-mat-select-search 
                 [formControl]="currencyFilterCtrl"

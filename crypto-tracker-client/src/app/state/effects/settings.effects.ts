@@ -5,6 +5,9 @@ import {
   loadSettings, 
   loadSettingsError, 
   loadSettingsSuccess, 
+  updateFiatCurrency, 
+  updateFiatCurrencyError, 
+  updateFiatCurrencySuccess, 
   updateTheme, 
   updateThemeError, 
   updateThemeSuccess, 
@@ -63,6 +66,14 @@ export class SettingsEffects {
   ), {
     dispatch: false
   });
+
+  updateFiatCurrencySetting$ = createEffect(() => this.actions$.pipe(
+    ofType(updateFiatCurrency),
+    switchMap(({ currencySymbol }) => this.settingsService.updateFiatCurrency(currencySymbol).pipe(
+      map(() => updateFiatCurrencySuccess({ currencySymbol })),
+      catchError(() => of(updateFiatCurrencyError()))
+    ))
+  ));
 
   constructor(
     private actions$: Actions,

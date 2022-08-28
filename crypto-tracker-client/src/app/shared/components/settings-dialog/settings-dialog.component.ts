@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatSelect, MatSelectChange } from '@angular/material/select';
 import { Store } from '@ngrx/store';
-import { Observable, ReplaySubject, Subject, take, takeUntil } from 'rxjs';
-import { updateTheme, updateUiScale } from 'src/app/state/actions/settings.actions';
+import { ReplaySubject, Subject, takeUntil } from 'rxjs';
+import { updateFiatCurrency, updateTheme, updateUiScale } from 'src/app/state/actions/settings.actions';
 import { AppState } from 'src/app/state/app.state';
 import { selectFiatCurrencyItems } from 'src/app/state/selectors/fiat-currency.selectors';
 import { selectSettings } from 'src/app/state/selectors/settings.selectors';
@@ -58,8 +58,17 @@ export class SettingsDialogComponent implements OnInit, OnDestroy {
    * this preference and update the view.
    * @param change 
    */
-  setUiScale(change: MatSelectChange) {
+  setUiScale(change: MatSelectChange): void {
     this.store.dispatch(updateUiScale({ uiScaleId: change.value }));
+  }
+
+  /**
+   * Sets the fiat currency in the store which sets off a side effect to save
+   * this preference and update the view.
+   * @param change 
+   */
+  setCurrency(change: MatSelectChange): void{
+    this.store.dispatch(updateFiatCurrency({ currencySymbol: change.value }));
   }
 
   /**

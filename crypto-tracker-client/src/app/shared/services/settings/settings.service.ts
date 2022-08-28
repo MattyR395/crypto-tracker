@@ -117,4 +117,13 @@ export class SettingsService {
       this.renderer.setStyle(document.documentElement, 'font-size', `${currentFontSize * uiScale.scale}px`);
     }
   }
+
+  /**
+   * Sets the fiat currency symbol to the given symbol.
+   * @param currencySymbol Currency symbol to change to.
+   * @returns 
+   */
+  updateFiatCurrency(currencySymbol: string): Observable<unknown> {
+    return this.http.patch<any>(`${environment.apiUrl}/settings/fiat-currency`, { currencySymbol });
+  }
 }
