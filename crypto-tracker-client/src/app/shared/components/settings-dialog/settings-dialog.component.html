@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>Settings</h2>
 <mat-dialog-content>
 
-  <div class="c-settings" *ngIf="settings">
+  <div class="c-settings">
     <div class="c-settings__item">
       <div class="c-settings__item__title">
         <h3>Currency</h3>
@@ -10,15 +10,22 @@
       <div class="c-settings__item__content">
         <mat-form-field appearance="outline">
           <mat-label>Currency</mat-label>
-          <mat-select cdkFocusInitial [value]="settings.fiatCurrency">
-            <mat-option *ngFor="let currency of fiatCurrencies$ | async" [value]="currency.symbol">
+          <mat-select cdkFocusInitial [formControl]="currencyCtrl" #currencySelect>
+            <mat-option>
+              <ngx-mat-select-search 
+                [formControl]="currencyFilterCtrl"
+                placeholderLabel="Search..."
+                noEntriesFoundLabel="'no matching currency found'">
+              </ngx-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let currency of filteredFiatCurrencies | async" [value]="currency.symbol">
               {{ currency.symbol }}
 
               <ng-container *ngIf="currency.currencySymbol && currency.currencySymbol.length">
                 ({{ currency.currencySymbol }})
               </ng-container>
             </mat-option>
-
           </mat-select>
         </mat-form-field>        
       </div>
@@ -27,9 +34,10 @@
     <div class="c-settings__item">
       <div class="c-settings__item__title">
         <h3>Theme</h3>
+        <p class="s-paragraph">Choose from a number of themes to personalise your experience!</p>
       </div>
       <div class="c-settings__item__content">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" *ngIf="settings">
           <mat-label>Theme</mat-label>
           <mat-select [value]="settings.themeId" (selectionChange)="setTheme($event)">
             <mat-option *ngFor="let theme of themes" [value]="theme.id" >{{ theme.name }}</mat-option>
@@ -40,28 +48,12 @@
 
     <div class="c-settings__item">
       <div class="c-settings__item__title">
-        <h3>Language</h3>
-        <p class="s-paragraph">Choose from a number of themes to personalise your experience!</p>
-      </div>
-      <div class="c-settings__item__content">
-        <mat-form-field appearance="outline">
-          <mat-label>Currency</mat-label>
-          <mat-select>
-            <mat-option [value]="1" >GBP £</mat-option>
-            <mat-option [value]="2" >USD $</mat-option>
-          </mat-select>
-        </mat-form-field>        
-      </div>
-    </div>
-
-    <div class="c-settings__item">
-      <div class="c-settings__item__title">
         <h3>UI Scale</h3>
         <p class="s-paragraph">Set the UI scale to be larger or smaller.</p>
       </div>
       <div class="c-settings__item__content">
   
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" *ngIf="settings">
           <mat-label>UI Scale</mat-label>
           <mat-select [value]="settings.uiScaleId" (selectionChange)="setUiScale($event)">
             <mat-option *ngFor="let scale of uiScales" [value]="scale.id">{{ scale.scale | percent }}</mat-option>
