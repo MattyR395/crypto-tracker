@@ -1,16 +1,16 @@
 <h2 mat-dialog-title>Settings</h2>
 <mat-dialog-content>
 
-  <div class="c-settings">
+  <div class="c-settings" *ngIf="settings">
     <div class="c-settings__item">
       <div class="c-settings__item__title">
         <h3>Currency</h3>
         <p class="s-paragraph">Change the base currency used throughout this app.</p>
       </div>
       <div class="c-settings__item__content">
-        <mat-form-field appearance="outline" *ngIf="settings$ | async">
+        <mat-form-field appearance="outline">
           <mat-label>Currency</mat-label>
-          <mat-select cdkFocusInitial [value]="(settings$ | async)!.fiatCurrency">
+          <mat-select cdkFocusInitial [value]="settings.fiatCurrency">
             <mat-option *ngFor="let currency of fiatCurrencies$ | async" [value]="currency.symbol">
               {{ currency.symbol }}
 
@@ -29,9 +29,9 @@
         <h3>Theme</h3>
       </div>
       <div class="c-settings__item__content">
-        <mat-form-field appearance="outline" *ngIf="settings$ | async">
+        <mat-form-field appearance="outline">
           <mat-label>Theme</mat-label>
-          <mat-select [value]="(settings$ | async)!.themeId" (selectionChange)="setTheme($event)">
+          <mat-select [value]="settings.themeId" (selectionChange)="setTheme($event)">
             <mat-option *ngFor="let theme of themes" [value]="theme.id" >{{ theme.name }}</mat-option>
           </mat-select>
         </mat-form-field> 
@@ -53,9 +53,27 @@
         </mat-form-field>        
       </div>
     </div>
+
+    <div class="c-settings__item">
+      <div class="c-settings__item__title">
+        <h3>UI Scale</h3>
+        <p class="s-paragraph">Set the UI scale to be larger or smaller.</p>
+      </div>
+      <div class="c-settings__item__content">
+  
+        <mat-form-field appearance="outline">
+          <mat-label>UI Scale</mat-label>
+          <mat-select [value]="settings.uiScaleId" (selectionChange)="setUiScale($event)">
+            <mat-option *ngFor="let scale of uiScales" [value]="scale.id">{{ scale.scale | percent }}</mat-option>
+          </mat-select>
+        </mat-form-field>        
+  
+      </div>
+    </div>  
   </div>
 
 </mat-dialog-content>
+
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-flat-button color="primary" [mat-dialog-close]="true">Done</button>

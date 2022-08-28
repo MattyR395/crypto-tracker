@@ -3,6 +3,7 @@ import { REQUEST } from '@nestjs/core';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UpdateThemeSettingDto } from './dto/update-theme.dto';
+import { UpdateUiScaleDto } from './dto/update-ui-scale.dto';
 import { Setting } from './entities/setting.entity';
 
 @Injectable()
@@ -19,7 +20,7 @@ export class SettingsService {
    */
   findAll(): Promise<Setting> {
     return this.settingsRepository.findOne({
-      select: ['themeId', 'fiatCurrency', 'language'],
+      select: ['themeId', 'fiatCurrency', 'language', 'uiScaleId'],
       where: { userId: this.request.user.sub }
     });
   }
@@ -32,6 +33,13 @@ export class SettingsService {
     this.settingsRepository.save({
       userId: this.request.user.sub,
       themeId: updateThemeSettingDto.themeId,
+    });
+  }
+
+  updateUiScale(updateUiScaleSettingDto: UpdateUiScaleDto) {
+    this.settingsRepository.save({
+      userId: this.request.user.sub,
+      uiScaleId: updateUiScaleSettingDto.uiScaleId,
     });
   }
 }

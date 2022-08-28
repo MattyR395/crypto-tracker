@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { SettingsService } from './settings.service';
 import { AuthGuard } from '@nestjs/passport';
 import { UpdateThemeSettingDto } from './dto/update-theme.dto';
+import { UpdateUiScaleDto } from './dto/update-ui-scale.dto';
 
 @UseGuards(AuthGuard('jwt'))
 @Controller('settings')
@@ -17,4 +18,11 @@ export class SettingsController {
   updateTheme(@Body() updateThemeSettingsDto: UpdateThemeSettingDto) {
     return this.settingsService.updateTheme(updateThemeSettingsDto);
   }
+
+  @Patch('ui-scale')
+  updateUiScale(@Body() updateUiScaleDto: UpdateUiScaleDto) {
+    return this.settingsService.updateUiScale(updateUiScaleDto);
+  }
+
+  
 }

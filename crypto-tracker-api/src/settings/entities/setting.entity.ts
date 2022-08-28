@@ -14,4 +14,7 @@ export class Setting {
 
   @Column()
   language: string;
+
+  @Column()
+  uiScaleId: number;
 }

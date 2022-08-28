@@ -10,6 +10,8 @@ import { SettingsDialogComponent } from './shared/components/settings-dialog/set
 import { MatDialog } from '@angular/material/dialog';
 import { loadSettings } from './state/actions/settings.actions';
 import { TranslateService } from '@ngx-translate/core';
+import { SettingsService } from './shared/services/settings/settings.service';
+import { selectSettings } from './state/selectors/settings.selectors';
 
 @Component({
   selector: 'app-root',
@@ -24,8 +26,9 @@ export class AppComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private dialog: MatDialog,
+    private settingsService: SettingsService,
     public auth: AuthService,
-    private translate: TranslateService,
+    translate: TranslateService,
     @Inject(DOCUMENT) public document: Document
   ) {
     translate.setDefaultLang('en');
@@ -62,5 +65,10 @@ export class AppComponent implements OnInit {
     this.store.dispatch(loadHoldings());
     this.store.dispatch(loadTokens());
     this.store.dispatch(loadSettings());
+
+    this.store.select(selectSettings).subscribe(settings => {
+      this.settingsService.setTheme(settings.themeId);
+      this.settingsService.setUiScale(settings.uiScaleId);
+    })
   }
 }

@@ -1,19 +1,28 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, exhaustMap, map, mergeMap, switchMap, tap } from 'rxjs/operators';
-import { loadSettings, loadSettingsError, loadSettingsSuccess, updateTheme, updateThemeError, updateThemeSuccess } from "../actions/settings.actions";
+import { catchError, exhaustMap, map, switchMap, tap } from 'rxjs/operators';
+import { 
+  loadSettings, 
+  loadSettingsError, 
+  loadSettingsSuccess, 
+  updateTheme, 
+  updateThemeError, 
+  updateThemeSuccess, 
+  updateUiScale, 
+  updateUiScaleError, 
+  updateUiScaleSuccess 
+} from "../actions/settings.actions";
 import { of } from "rxjs";
 import { SettingsService } from "src/app/shared/services/settings/settings.service";
 
 @Injectable()
 export class SettingsEffects {
-  
+
   loadSettings$ = createEffect(() => this.actions$.pipe(
     ofType(loadSettings),
     exhaustMap(() => this.settingsService.getSettings().pipe(
       switchMap((settings) => [
-        loadSettingsSuccess({ settings }),
-        updateThemeSuccess({ themeId: settings.themeId })
+        loadSettingsSuccess({ settings })
       ]),
       catchError(() => of(loadSettingsError()))
     ))
@@ -36,6 +45,21 @@ export class SettingsEffects {
   setTheme$ = createEffect(() => this.actions$.pipe(
     ofType(updateThemeSuccess),
     tap(({ themeId }) => this.settingsService.setTheme(themeId))
+  ), {
+    dispatch: false
+  });
+
+  updateUiScaleSetting$ = createEffect(() => this.actions$.pipe(
+    ofType(updateUiScale),
+    switchMap(({ uiScaleId }) => this.settingsService.updateUiScale(uiScaleId).pipe(
+      map(() => updateUiScaleSuccess({ uiScaleId })),
+      catchError(() => of(updateUiScaleError()))
+    ))
+  ));
+
+  setUiScale$ = createEffect(() => this.actions$.pipe(
+    ofType(updateUiScaleSuccess),
+    tap(({ uiScaleId }) => this.settingsService.setUiScale(uiScaleId))
   ), {
     dispatch: false
   });

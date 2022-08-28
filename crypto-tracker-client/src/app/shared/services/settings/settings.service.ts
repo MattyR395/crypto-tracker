@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ThemeEnum } from '@enums/theme.enum';
 import { Settings } from '@models/settings.model';
 import { Theme } from '@models/theme.model';
+import { UiScale } from '@models/ui-scale.model';
 
 const THEMES: Theme[] = [
   {
@@ -17,7 +18,15 @@ const THEMES: Theme[] = [
     name: 'Dark',
     class: 'theme-dark',
   }
-]
+];
+
+const UI_SCALES: UiScale[] = [
+  { id: 1, scale: .5 },
+  { id: 2, scale: .75 },
+  { id: 3, scale: 1 },
+  { id: 4, scale: 1.25 },
+  { id: 5, scale: 1.5 },
+];
 
 @Injectable({
   providedIn: 'root'
@@ -68,11 +77,44 @@ export class SettingsService {
   }
 
   /**
-   * Updates the settings in the API.
+   * Returns a list of all the available UI scales.
+   * @returns UiScale[]
+   */
+  getUiScales(): UiScale[] {
+    return UI_SCALES;
+  }
+
+  /**
+   * Updates the theme ID setting in the API.
    * @param themeId ID of the theme to change to.
    * @returns 
    */
   updateTheme(themeId: ThemeEnum): Observable<unknown> {
     return this.http.patch<any>(`${environment.apiUrl}/settings/theme`, { themeId });
+  }
+
+  /**
+   * Updates the UI scale setting in the API.
+   * @param uiScaleId ID of the UI scale to change to.
+   * @returns 
+   */
+  updateUiScale(uiScaleId: number): Observable<unknown> {
+    return this.http.patch<any>(`${environment.apiUrl}/settings/ui-scale`, { uiScaleId });
+  }
+
+  /**
+   * Sets the UI to scale by the given scale.
+   * @param uiScaleId ID of the UI scale to change to.
+   */
+  setUiScale(uiScaleId: number): void {
+    const uiScale = UI_SCALES.find(u => u.id === uiScaleId);
+
+    if (uiScale) {
+      const currentFontSize = parseFloat(getComputedStyle(document.documentElement)
+        .getPropertyValue('--font-size-base').replace(/\D/g, ''));
+
+      // Set our new base font-size on the document element.
+      this.renderer.setStyle(document.documentElement, 'font-size', `${currentFontSize * uiScale.scale}px`);
+    }
   }
 }

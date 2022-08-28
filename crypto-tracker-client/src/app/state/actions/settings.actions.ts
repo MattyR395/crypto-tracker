@@ -12,3 +12,8 @@ export const loadSettingsSuccess = createAction(
 export const updateTheme = createAction('[Settings] Update Theme', props<{ themeId: ThemeEnum }>());
 export const updateThemeError = createAction('[Settings] Update Theme Error');
 export const updateThemeSuccess = createAction('[Settings] Update Theme Success', props<{ themeId: ThemeEnum }>());
+
+export const updateUiScale = createAction('[Settings] Update UI Scale', props<{ uiScaleId: number }>());
+export const updateUiScaleError = createAction('[Settings] Update UI Scale Error');
+export const updateUiScaleSuccess = createAction('[Settings] Update UI Scale Success', props<{ uiScaleId: number }>());
+

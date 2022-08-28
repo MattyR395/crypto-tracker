@@ -4,4 +4,5 @@ export interface Settings {
   fiatCurrency: string;
   language: string;
   themeId: ThemeEnum;
+  uiScaleId: number;
 }

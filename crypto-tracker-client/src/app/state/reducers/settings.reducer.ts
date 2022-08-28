@@ -1,4 +1,4 @@
-import { loadSettings, loadSettingsError, loadSettingsSuccess, updateTheme } from "../actions/settings.actions"
+import { loadSettings, loadSettingsError, loadSettingsSuccess, updateTheme, updateThemeSuccess, updateUiScaleSuccess } from "../actions/settings.actions"
 import { Action, createReducer, on } from '@ngrx/store';
 import { SettingsState } from "../app.state";
 import { ThemeEnum } from "@enums/theme.enum";
@@ -8,7 +8,8 @@ const initialState: SettingsState = {
   settings: {
     fiatCurrency: '',
     themeId: ThemeEnum.DARK,
-    language: 'en'
+    language: 'en',
+    uiScaleId: 3
   }
 }
 
@@ -19,7 +20,9 @@ const reducer = createReducer(
   on(loadSettingsError, (state) => ({ ...state, isLoading: false })),
   on(loadSettings, (state) => ({ ...state, isLoading: true })),
 
-  on(updateTheme, (state, action) => ({ ...state, settings: { ...state.settings, themeId: action.themeId } })),
+  on(updateThemeSuccess, (state, action) => ({ ...state, settings: { ...state.settings, themeId: action.themeId } })),
+
+  on(updateUiScaleSuccess, (state, action) => ({ ...state, settings: { ...state.settings, uiScaleId: action.uiScaleId } }))
 );
 
 export function SettingsReducer(state: SettingsState | undefined, action: Action) {
