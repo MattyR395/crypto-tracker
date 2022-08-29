@@ -159,7 +159,7 @@ $typography: mat.define-typography-config(
  */
 
 // Fix the alignment of icons in buttons 
-.mat-button-wrapper {
+.mat-button-wrapper:not(ngx-mat-select-search .mat-button-wrapper) {
   display: flex;
   align-items: center;
   gap: .3rem;

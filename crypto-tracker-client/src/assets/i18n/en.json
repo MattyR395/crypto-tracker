@@ -22,7 +22,7 @@
     "TotalSpentLabel": "Total Spent",
     "AmountChangedLabel": "Change",
     "MyAssetsTitle": "My Assets",
-    "SearchCurrenciesNoneFound": "No matching tokens found",
+    "SearchTokensNoneFound": "No matching tokens found",
     "AddAssetDialogTitle": "Add Asset",
     "AddAssetButtonLabel": "Add"
   },

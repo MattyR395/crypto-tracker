@@ -109,7 +109,7 @@ export class SettingsDialogComponent implements OnInit, OnDestroy {
       // Populate fiatCurrencies and sort it by symbol.
       this.fiatCurrencies = [...fiatCurrencies].sort((a, b) => a.symbol.localeCompare(b.symbol));
 
-      // load the initial bank list
+      // load the initial currencies list
       this.filteredFiatCurrencies.next(this.fiatCurrencies.slice());
     });
 
