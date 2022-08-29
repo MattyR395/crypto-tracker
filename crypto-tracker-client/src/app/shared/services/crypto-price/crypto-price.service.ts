@@ -19,7 +19,7 @@ export class CryptoPriceService {
    * @param holdings 
    * @returns 
    */
-  createAssetIdQueryString(holdings: Holding[]): string {
+  private createAssetIdQueryString(holdings: Holding[]): string {
     // Filter out duplicate assets.
     holdings = holdings.filter((obj, pos, arr) => {
       return arr.map((mapObj: Holding) => mapObj.tokenId).indexOf(obj.tokenId) === pos

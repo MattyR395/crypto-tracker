@@ -19,6 +19,7 @@ export class HoldingsService {
 
   findAll(): Promise<Holding[]> {
     return this.holdingsRepository.find({
+      select: ['id', 'tokenId', 'amount', 'paidUsd', 'dateAquired'],
       where: {
         userId: this.request.user.sub
       }
