@@ -12,7 +12,8 @@
     "Settings": "Settings",
     "Logout": "Logout",
     "Cancel": "Cancel",
-    "Done": "Done"
+    "Done": "Done",
+    "Search": "Search..."
   },
 
   "Home": {
@@ -24,11 +25,14 @@
 
   "Settings": {
     "CurrencyLabel": "Currency",
-    "CurrencyDescription": "Select the base currency you want to use throughout this app.",
+    "CurrencyDescription": "Change the base currency used throughout this app and the values will automatically adjust.",
     "ThemeLabel": "Theme",
     "ThemeDescription": "Personalise your experience by choosing a theme.",
     "LanguageLabel": "Language",
-    "LanguageDescription": "Updating the language will also change things such as date formatting"
+    "LanguageDescription": "Updating the language will also change things such as date formatting",
+    "SearchCurrenciesNoneFound": "No matching currencies found",
+    "UiScaleLabel": "UI Scale",
+    "UiScaleDescription": "Change the size of the UI to be larger or smaller."
   }
 
 }

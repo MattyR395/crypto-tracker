@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select'; 
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatSelectModule,
     NgxMatSelectSearchModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule
   ],
   exports: [
   SettingsDialogComponent    

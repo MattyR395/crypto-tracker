@@ -4,18 +4,18 @@
   <div class="c-settings">
     <div class="c-settings__item">
       <div class="c-settings__item__title">
-        <h3>Currency</h3>
-        <p class="s-paragraph">Change the base currency used throughout this app.</p>
+        <h3>{{ 'Settings.CurrencyLabel' | translate }}</h3>
+        <p class="s-paragraph">{{ 'Settings.CurrencyDescription' | translate }}</p>
       </div>
       <div class="c-settings__item__content">
         <mat-form-field appearance="outline">
-          <mat-label>Currency</mat-label>
+          <mat-label>{{ 'Settings.CurrencyLabel' | translate }}</mat-label>
           <mat-select cdkFocusInitial [formControl]="currencyCtrl" #currencySelect (selectionChange)="setCurrency($event)">
             <mat-option>
               <ngx-mat-select-search 
                 [formControl]="currencyFilterCtrl"
-                placeholderLabel="Search..."
-                noEntriesFoundLabel="'no matching currency found'">
+                [placeholderLabel]="'Shared.Search' | translate"
+                [noEntriesFoundLabel]="'Settings.SearchCurrenciesNoneFound' | translate">
               </ngx-mat-select-search>
             </mat-option>
 
@@ -33,12 +33,12 @@
 
     <div class="c-settings__item">
       <div class="c-settings__item__title">
-        <h3>Theme</h3>
-        <p class="s-paragraph">Choose from a number of themes to personalise your experience!</p>
+        <h3>{{ 'Settings.ThemeLabel' | translate }}</h3>
+        <p class="s-paragraph">{{ 'Settings.ThemeDescription' | translate }}</p>
       </div>
       <div class="c-settings__item__content">
         <mat-form-field appearance="outline" *ngIf="settings">
-          <mat-label>Theme</mat-label>
+          <mat-label>{{ 'Settings.ThemeLabel' | translate }}</mat-label>
           <mat-select [value]="settings.themeId" (selectionChange)="setTheme($event)">
             <mat-option *ngFor="let theme of themes" [value]="theme.id" >{{ theme.name }}</mat-option>
           </mat-select>
@@ -48,13 +48,13 @@
 
     <div class="c-settings__item">
       <div class="c-settings__item__title">
-        <h3>UI Scale</h3>
-        <p class="s-paragraph">Set the UI scale to be larger or smaller.</p>
+        <h3>{{ 'Settings.UiScaleLabel' | translate }}</h3>
+        <p class="s-paragraph">{{ 'Settings.UiScaleDescription' | translate }}</p>
       </div>
       <div class="c-settings__item__content">
   
         <mat-form-field appearance="outline" *ngIf="settings">
-          <mat-label>UI Scale</mat-label>
+          <mat-label>{{ 'Settings.UiScaleLabel' | translate }}</mat-label>
           <mat-select [value]="settings.uiScaleId" (selectionChange)="setUiScale($event)">
             <mat-option *ngFor="let scale of uiScales" [value]="scale.id">{{ scale.scale | percent }}</mat-option>
           </mat-select>
@@ -67,6 +67,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-flat-button color="primary" [mat-dialog-close]="true">Done</button>
+  <button mat-button mat-dialog-close>{{ 'Shared.Cancel' | translate }}</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="true">{{ 'Shared.Done' | translate }}</button>
 </mat-dialog-actions>
