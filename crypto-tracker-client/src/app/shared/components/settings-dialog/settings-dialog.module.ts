@@ -21,7 +21,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatSelectModule,
     NgxMatSelectSearchModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    MatDialogModule
   ],
   exports: [
   SettingsDialogComponent    

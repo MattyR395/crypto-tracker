@@ -13,14 +13,18 @@
     "Logout": "Logout",
     "Cancel": "Cancel",
     "Done": "Done",
-    "Search": "Search..."
+    "Search": "Search...",
+    "AddItem": "Add"
   },
 
   "Home": {
     "YourBalanceLabel": "Your Balance ({{currencySymbol}})",
     "TotalSpentLabel": "Total Spent",
     "AmountChangedLabel": "Change",
-    "MyAssetsTitle": "My Assets"
+    "MyAssetsTitle": "My Assets",
+    "SearchCurrenciesNoneFound": "No matching tokens found",
+    "AddAssetDialogTitle": "Add Asset",
+    "AddAssetButtonLabel": "Add"
   },
 
   "Settings": {

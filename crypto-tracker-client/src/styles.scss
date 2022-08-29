@@ -153,3 +153,36 @@ $typography: mat.define-typography-config(
 
 @include mat.core($typography);
 @include mat.all-component-themes($theme);
+
+/**
+ * Angular Material hotfixes
+ */
+
+// Fix the alignment of icons in buttons 
+.mat-button-wrapper {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+button:not(.mat-menu-item) { 
+  border-radius: .5rem !important;
+}
+
+// Fix inconsistent heights of inputs and selects due to changing the font-family.
+.mat-form-field {
+  line-height: var(--line-height-base); 
+}
+
+.mat-dialog-content {
+  padding-top: var(--gap-md) !important;
+  padding-bottom: var(--gap-md) !important;
+  background-color: color("bg-accent");
+
+  border-top: 2px solid color("bg-divider");
+  border-bottom: 2px solid color("bg-divider");
+}
+
+.mat-hint {
+  color: color("bg-subtext");
+}

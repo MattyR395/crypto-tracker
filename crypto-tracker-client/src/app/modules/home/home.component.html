@@ -1,6 +1,13 @@
 <app-overview-card></app-overview-card>
 
-<h1>{{ 'Home.MyAssetsTitle' | translate }}</h1>
+<h1>
+  {{ 'Home.MyAssetsTitle' | translate }}
+
+  <button mat-stroked-button color="primary" (click)="openAddAssetDialog()">
+    <mat-icon aria-hidden="true">add_box</mat-icon>
+    {{ 'Home.AddAssetButtonLabel' | translate }}
+  </button>  
+</h1>
 
 <div class="l-space l-space--md">
   <app-asset-card *ngFor="let asset of assets; trackBy: trackByFn" [asset]="asset"></app-asset-card>

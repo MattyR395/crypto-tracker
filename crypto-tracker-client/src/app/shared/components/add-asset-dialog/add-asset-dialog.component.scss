@@ -1,0 +1,17 @@
+@import 'src/assets/scss/mixin/screen';
+
+.c-add-asset-form {
+  display: grid;
+  gap: var(--gap-sm);
+
+  &__token {
+    display: grid;
+    grid-template-columns: auto 9rem;
+    gap: var(--gap-sm);
+
+    // Make the two fields wrap onto a new line on small screens.
+    @include screen('sm') {
+      grid-template-columns: auto;
+    }
+  }
+}

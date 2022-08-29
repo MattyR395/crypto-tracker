@@ -25,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { SettingsEffects } from './state/effects/settings.effects';
 import { SettingsReducer } from './state/reducers/settings.reducer';
 import { SettingsDialogModule } from './shared/components/settings-dialog/settings-dialog.module';
+import { AddAssetDialogModule } from './shared/components/add-asset-dialog/add-asset-dialog.module';
 
 const matModules = [
   MatButtonModule,
@@ -36,7 +37,7 @@ const matModules = [
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +45,7 @@ const matModules = [
     SettingsDialogModule,
     matModules,
     BrowserAnimationsModule,
+    AddAssetDialogModule,
     HttpClientModule,
     StoreModule.forRoot({
       fiatCurrencies: FiatCurrencyReducer,

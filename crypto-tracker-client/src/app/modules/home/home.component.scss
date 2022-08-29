@@ -4,4 +4,9 @@ h1 {
 
   font-size: var(--font-size-h4);
   font-weight: 600;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
+

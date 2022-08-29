@@ -9,6 +9,7 @@ import { CurrencyModule } from 'src/app/shared/components/currency/currency.modu
 import { CurrencyChangeModule } from 'src/app/shared/components/currency-change/currency-change.module';
 import { AssetCardComponent } from './asset-card/asset-card.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButtonModule,
     CurrencyModule,
     CurrencyChangeModule,
-    TranslateModule
+    TranslateModule,
+    MatDialogModule
   ]
 })
 export class HomeModule { }

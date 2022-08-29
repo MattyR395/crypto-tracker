@@ -45,12 +45,3 @@ $divider-width: 2px;
     }
   }
 }
-
-mat-dialog-content {
-  padding-top: var(--gap-md);
-  padding-bottom: var(--gap-md);
-  background-color: color("bg-accent");
-
-  border-top: 2px solid color("bg-divider");
-  border-bottom: 2px solid color("bg-divider");
-}
