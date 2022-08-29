@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, exhaustMap, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { 
   loadSettings, 
   loadSettingsError, 
@@ -17,16 +17,15 @@ import {
 } from "../actions/settings.actions";
 import { of } from "rxjs";
 import { SettingsService } from "src/app/shared/services/settings/settings.service";
+import { Settings } from "@models/settings.model";
 
 @Injectable()
 export class SettingsEffects {
 
   loadSettings$ = createEffect(() => this.actions$.pipe(
     ofType(loadSettings),
-    exhaustMap(() => this.settingsService.getSettings().pipe(
-      switchMap((settings) => [
-        loadSettingsSuccess({ settings })
-      ]),
+    switchMap(() => this.settingsService.getSettings().pipe(
+      map((settings: Settings) => loadSettingsSuccess({ settings })),
       catchError(() => of(loadSettingsError()))
     ))
   ));

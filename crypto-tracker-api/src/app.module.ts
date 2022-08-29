@@ -12,7 +12,7 @@ dotenv.config();
 
 @Module({
   imports: [
-    HoldingsModule, 
+    HoldingsModule,
     SettingsModule,
     TypeOrmModule.forRoot({
       type: 'mysql',

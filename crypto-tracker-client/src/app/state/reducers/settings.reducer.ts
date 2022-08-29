@@ -6,7 +6,7 @@ import { ThemeEnum } from "@enums/theme.enum";
 const initialState: SettingsState = {
   isLoading: false,
   settings: {
-    fiatCurrency: '',
+    fiatCurrency: 'USD',
     themeId: ThemeEnum.DARK,
     language: 'en',
     uiScaleId: 3
@@ -16,7 +16,10 @@ const initialState: SettingsState = {
 const reducer = createReducer(
   initialState,
 
-  on(loadSettingsSuccess, (_state, action) => ({ isLoading: false, settings: action.settings })),
+  on(loadSettingsSuccess, (_state, action) => {
+    // Use initialState if the settings are null.
+    return { isLoading: false, settings: action.settings ?? initialState.settings };
+  }),
   on(loadSettingsError, (state) => ({ ...state, isLoading: false })),
   on(loadSettings, (state) => ({ ...state, isLoading: true })),
 
