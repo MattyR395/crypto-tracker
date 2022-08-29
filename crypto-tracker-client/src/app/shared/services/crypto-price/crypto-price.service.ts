@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { TokenPrice } from '@models/token-price.model';
 import { Holding } from '@models/holding.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +61,7 @@ export class CryptoPriceService {
   }
 
   getAllHoldings(): Observable<Holding[]> {
-    return this.http.get<any>('http://localhost:3000/holdings').pipe(
+    return this.http.get<any>(`${environment.apiUrl}/holdings`).pipe(
       map((response: Holding[]) => {
         return response.map(r => ({ 
           ...r, 
