@@ -25,6 +25,7 @@
     "paths": { 
       "@models/*": ["../crypto-tracker-api/src/shared/models/*"], 
       "@enums/*": ["../crypto-tracker-api/src/shared/enums/*"],
+      "@api/*": ["../crypto-tracker-api/src/*"],
     }
   },
   "angularCompilerOptions": {

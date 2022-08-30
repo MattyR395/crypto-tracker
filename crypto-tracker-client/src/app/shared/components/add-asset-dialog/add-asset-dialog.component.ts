@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
-import { Token } from '@models/token.model';
+ import { Token } from '@models/token.model';
 import { Store } from '@ngrx/store';
 import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
 import { Subject } from 'rxjs/internal/Subject';
 import { takeUntil } from 'rxjs/operators';
 import { AppState } from 'src/app/state/app.state';
 import { selectTokens } from 'src/app/state/selectors/token.selectors';
+import { addHolding } from 'src/app/state/actions/holding.actions';
 
 @Component({
   selector: 'app-add-asset-dialog',
@@ -27,7 +28,7 @@ export class AddAssetDialogComponent implements OnInit, OnDestroy {
   addAssetForm = new FormGroup({
     cryptoToken: this.cryptoTokenCtrl,
     cryptoAmount: new FormControl('', Validators.required),
-    amountPaid: new FormControl(''),
+    amountPaid: new FormControl('', Validators.required),
     dateAquired: new FormControl(''),
   })
 
@@ -35,7 +36,7 @@ export class AddAssetDialogComponent implements OnInit, OnDestroy {
   protected _onDestroy = new Subject<void>();
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
   ) {
     this.store.select(selectTokens).subscribe(cryptoTokens => {
       // Prevent updating the filtered crypto tokens list if the list hasn't changed length. 
@@ -82,6 +83,23 @@ export class AddAssetDialogComponent implements OnInit, OnDestroy {
     this.filteredCryptoTokens$.next(
       this.cryptoTokens.filter(token => `${token.name} ${token.symbol}`.toLowerCase().indexOf(search ?? '') > -1)
     );
+  }
+
+  /**
+   * Adds a new holding if the form is valid.
+   */
+  submitAddAssetForm() {
+    if (this.addAssetForm.valid) {
+      const holdingDto = {
+        tokenId: this.addAssetForm.value.cryptoToken,
+        amount: parseFloat(this.addAssetForm.value.cryptoAmount!),
+        paidUsd: parseFloat(this.addAssetForm.value.amountPaid!),
+        dateAquired: this.addAssetForm.value.dateAquired!,
+      }
+  
+      this.store.dispatch(addHolding({ holdingDto }));
+    }
+
   }
 
   ngOnInit(): void {

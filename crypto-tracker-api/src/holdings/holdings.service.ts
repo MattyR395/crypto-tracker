@@ -13,8 +13,33 @@ export class HoldingsService {
     @Inject(REQUEST) private readonly request: { user: { sub: string } }
   ) {}
 
-  create(createHoldingDto: CreateHoldingDto) {
-    return 'This action adds a new holding';
+  /**
+   * Creates a new holding.
+   * @param createHoldingDto Info from the "Add Holding" form.
+   * @returns The newly created holding.
+   */
+  async create(createHoldingDto: CreateHoldingDto) {
+    // Create an object which can be added to if the user entered a date aquired.
+    const insertValues: any = {
+      userId: this.request.user.sub,
+      tokenId: createHoldingDto.tokenId,
+      amount: createHoldingDto.amount,
+      paidUsd: createHoldingDto.paidUsd
+    }
+
+    // Add the date aquired if it was 
+    if (createHoldingDto.dateAquired) {
+      insertValues.dateAquired = new Date(createHoldingDto.dateAquired);
+    }
+
+    // Await the creation of the holding then return it.
+    return {
+      id: (await this.holdingsRepository.insert(insertValues)).generatedMaps[0].id,
+      tokenId: insertValues.tokenId,
+      amount: insertValues.amount,
+      paidUsd: insertValues.paidUsd ?? null,
+      dateAquired: insertValues.dateAquired ?? null
+    };
   }
 
   findAll(): Promise<Holding[]> {

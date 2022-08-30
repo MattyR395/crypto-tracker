@@ -15,8 +15,8 @@ export class Holding {
   amount: number;
 
   @Column()
-  paidUsd: number;
+  paidUsd?: number;
 
-  @Column()
-  dateAquired: Date;
+  @Column({ type: 'date' }) 
+  dateAquired?: Date;
 }

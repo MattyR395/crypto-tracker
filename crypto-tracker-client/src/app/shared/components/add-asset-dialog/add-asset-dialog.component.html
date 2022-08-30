@@ -48,7 +48,7 @@
 
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>{{ 'Shared.Cancel' | translate }}</button>
-  <button mat-flat-button color="primary">
+  <button mat-flat-button color="primary" (click)="submitAddAssetForm()" [disabled]="!addAssetForm.valid">
     {{ 'Shared.AddItem' | translate }}
   </button>
 </mat-dialog-actions>

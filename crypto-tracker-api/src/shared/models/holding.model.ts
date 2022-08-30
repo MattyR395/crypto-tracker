@@ -2,6 +2,6 @@ export interface Holding {
   id: number;
   tokenId: string;
   amount: number;
-  dateAquired: Date;
+  dateAquired: string;
   paidUsd: number;
 }
