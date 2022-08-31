@@ -186,3 +186,13 @@ button:not(.mat-menu-item) {
 .mat-hint {
   color: color("bg-subtext");
 }
+
+// // TEMP: Fix alignment of the mat prefix against text in inputs.
+.mat-form-field-appearance-outline .mat-form-field-prefix {
+  top: -4px !important;
+  transition: var(--transition-main);
+}
+
+.mat-form-field-should-float.mat-form-field-appearance-outline .mat-form-field-prefix {
+  top: 0 !important;
+}

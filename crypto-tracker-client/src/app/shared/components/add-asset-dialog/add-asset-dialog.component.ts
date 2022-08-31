@@ -9,6 +9,10 @@ import { takeUntil } from 'rxjs/operators';
 import { AppState } from 'src/app/state/app.state';
 import { selectTokens } from 'src/app/state/selectors/token.selectors';
 import { addHolding } from 'src/app/state/actions/holding.actions';
+import { Settings } from '@models/settings.model';
+import { selectSettings } from 'src/app/state/selectors/settings.selectors';
+import { selectFiatRate } from 'src/app/state/selectors/fiat-currency.selectors';
+import { FiatCurrency } from '@models/fiat-currency.model';
 
 @Component({
   selector: 'app-add-asset-dialog',
@@ -30,7 +34,10 @@ export class AddAssetDialogComponent implements OnInit, OnDestroy {
     cryptoAmount: new FormControl('', Validators.required),
     amountPaid: new FormControl('', Validators.required),
     dateAquired: new FormControl(''),
-  })
+  });
+
+  settings: Settings | undefined;
+  currentFiatCurrency: FiatCurrency | undefined;
 
   /** Subject that emits when the component has been destroyed. */
   protected _onDestroy = new Subject<void>();
@@ -47,6 +54,13 @@ export class AddAssetDialogComponent implements OnInit, OnDestroy {
         // Populate the filtered tokens list initially.
         this.filteredCryptoTokens$.next(this.cryptoTokens.slice());
       }
+    });
+
+    // Populate the settings.
+    this.store.select(selectSettings).subscribe(settings => {
+      this.settings = settings;
+
+      this.store.select(selectFiatRate(this.settings.fiatCurrency)).subscribe(fiatRate => this.currentFiatCurrency = fiatRate);
     });
   }
 

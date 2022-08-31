@@ -14,7 +14,8 @@
     "Cancel": "Cancel",
     "Done": "Done",
     "Search": "Search...",
-    "AddItem": "Add"
+    "AddItem": "Add",
+    "OptionalField": "Optional"
   },
 
   "Home": {
@@ -23,8 +24,14 @@
     "AmountChangedLabel": "Change",
     "MyAssetsTitle": "My Assets",
     "SearchTokensNoneFound": "No matching tokens found",
-    "AddAssetDialogTitle": "Add Asset",
-    "AddAssetButtonLabel": "Add"
+    "AddAssetButtonLabel": "Add",
+    "AddAsset": {
+      "DialogTitle": "Add Asset",
+      "TokenInputLabel": "Token",
+      "AmountInputLabel": "Amount",
+      "CostInputLabel": "Cost in {{currencySymbol}}",
+      "DateAquiredInputLabel": "Date Aquired"
+    }
   },
 
   "Settings": {
@@ -38,5 +45,4 @@
     "UiScaleLabel": "UI Scale",
     "UiScaleDescription": "Change the size of the UI to be larger or smaller."
   }
-
 }
