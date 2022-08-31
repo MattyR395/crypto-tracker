@@ -8,11 +8,13 @@ import { Subject } from 'rxjs/internal/Subject';
 import { takeUntil } from 'rxjs/operators';
 import { AppState } from 'src/app/state/app.state';
 import { selectTokens } from 'src/app/state/selectors/token.selectors';
-import { addHolding } from 'src/app/state/actions/holding.actions';
+import { addHolding, addHoldingSuccess } from 'src/app/state/actions/holding.actions';
 import { Settings } from '@models/settings.model';
 import { selectSettings } from 'src/app/state/selectors/settings.selectors';
 import { selectFiatRate } from 'src/app/state/selectors/fiat-currency.selectors';
 import { FiatCurrency } from '@models/fiat-currency.model';
+import { Actions, ofType } from '@ngrx/effects';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-asset-dialog',
@@ -44,6 +46,8 @@ export class AddAssetDialogComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<AppState>,
+    private actions$: Actions,
+    private dialogRef: MatDialogRef<AddAssetDialogComponent>
   ) {
     this.store.select(selectTokens).subscribe(cryptoTokens => {
       // Prevent updating the filtered crypto tokens list if the list hasn't changed length. 
@@ -62,6 +66,14 @@ export class AddAssetDialogComponent implements OnInit, OnDestroy {
 
       this.store.select(selectFiatRate(this.settings.fiatCurrency)).subscribe(fiatRate => this.currentFiatCurrency = fiatRate);
     });
+
+    // Listen for the addHoldingSuccess action and close the dialog.
+    this.actions$.pipe(
+      ofType(addHoldingSuccess),
+      takeUntil(this._onDestroy)
+    ).subscribe(() => {
+      this.dialogRef.close();
+    })
   }
 
   /**
@@ -113,7 +125,6 @@ export class AddAssetDialogComponent implements OnInit, OnDestroy {
   
       this.store.dispatch(addHolding({ holdingDto }));
     }
-
   }
 
   ngOnInit(): void {
