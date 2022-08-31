@@ -10,4 +10,20 @@
   <div class="c-asset-card__change">
     <app-currency-change [to]="holdingValueUsd" [from]="asset.paidUsd"></app-currency-change>
   </div>
+
+  <button mat-icon-button class="c-asset-card__actions" [matMenuTriggerFor]="actionsMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>  
+
+  <mat-menu #actionsMenu="matMenu" xPosition="before">
+    <button mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>{{ 'Shared.Edit' | translate }}</span>
+    </button>
+    <button mat-menu-item (click)="openDeleteAssetConfirmDialog()">
+      <mat-icon>delete_forever</mat-icon>
+      <span>{{ 'Shared.Delete' | translate }}</span>
+    </button>
+  </mat-menu>
+
 </div>

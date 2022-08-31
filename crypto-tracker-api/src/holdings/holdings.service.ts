@@ -59,7 +59,9 @@ export class HoldingsService {
     return `This action updates a #${id} holding`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} holding`;
+  async remove(id: number) {
+    return {
+      success: (await this.holdingsRepository.delete(id)).affected > 0
+    };
   }
 }

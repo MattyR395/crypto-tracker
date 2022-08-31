@@ -2,8 +2,11 @@
 
 .c-asset-card {
   display: grid;
-  grid-template-columns: auto min-content;
+  grid-template-columns: auto min-content min-content;
   grid-template-rows: min-content min-content;
+
+  gap: 0 .5rem;
+  padding-inline-end: var(--gap-sm);
 
   &__title {
     white-space: nowrap;
@@ -20,10 +23,16 @@
   &__change {
     font-size: var(--font-size-subtext);
     color: color("bg-subtext");
+    grid-row: 2;
   }
 
   &__change, &__value {
     display: flex;
     justify-content: flex-end;
+  }
+
+  &__actions {
+    grid-row: span 2;
+    grid-column: 3;
   }
 }

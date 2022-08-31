@@ -20,4 +20,13 @@ export class HoldingService {
   addHolding(holding: CreateHoldingDto): Observable<Holding> {
     return this.http.post<Holding>(`${environment.apiUrl}/holdings`, holding);
   }
+
+  /**
+   * Sends a request to delete the holding with the given id.
+   * @param holdingId ID of the holding to delete.
+   * @returns Observable of the server response.
+   */
+  deleteHolding(holdingId: number): Observable<unknown> {
+    return this.http.delete(`${environment.apiUrl}/holdings/${holdingId}`);
+  }
 }

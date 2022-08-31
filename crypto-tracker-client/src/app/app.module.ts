@@ -26,6 +26,7 @@ import { SettingsEffects } from './state/effects/settings.effects';
 import { SettingsReducer } from './state/reducers/settings.reducer';
 import { SettingsDialogModule } from './shared/components/settings-dialog/settings-dialog.module';
 import { AddAssetDialogModule } from './shared/components/add-asset-dialog/add-asset-dialog.module';
+import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
 
 const matModules = [
   MatButtonModule,
@@ -37,7 +38,8 @@ const matModules = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

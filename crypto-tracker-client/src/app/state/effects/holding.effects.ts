@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { CryptoPriceService } from "src/app/shared/services/crypto-price/crypto-price.service";
-import { addHolding, addHoldingError, addHoldingSuccess, loadHoldings, loadHoldingsError, loadHoldingsSuccess } from "../actions/holding.actions";
+import { addHolding, addHoldingError, addHoldingSuccess, deleteHolding, deleteHoldingError, deleteHoldingSuccess, loadHoldings, loadHoldingsError, loadHoldingsSuccess } from "../actions/holding.actions";
 import { of } from "rxjs";
 import { HoldingService } from "src/app/shared/services/holding/holding.service";
 
@@ -22,6 +22,14 @@ export class HoldingEffects {
     mergeMap(({ holdingDto }) => this.holdingService.addHolding(holdingDto).pipe(
       map((holding) => addHoldingSuccess({ holding })),
       catchError(() => of(addHoldingError()))
+    ))
+  ));
+
+  deleteHolding$ = createEffect(() => this.actions$.pipe(
+    ofType(deleteHolding),
+    mergeMap(({ holdingId }) => this.holdingService.deleteHolding(holdingId).pipe(
+      map(() => deleteHoldingSuccess({ holdingId })),
+      catchError(() => of(deleteHoldingError()))
     ))
   ));
 

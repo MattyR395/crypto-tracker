@@ -162,10 +162,11 @@ $typography: mat.define-typography-config(
 .mat-button-wrapper:not(ngx-mat-select-search .mat-button-wrapper) {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: .3rem;
 }
 
-button:not(.mat-menu-item) { 
+button:not(.mat-menu-item, .mat-icon-button) { 
   border-radius: .5rem !important;
 }
 

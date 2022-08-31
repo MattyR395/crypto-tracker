@@ -15,7 +15,9 @@
     "Done": "Done",
     "Search": "Search...",
     "AddItem": "Add",
-    "OptionalField": "Optional"
+    "OptionalField": "Optional",
+    "Delete": "Delete",
+    "Edit": "Edit"
   },
 
   "Home": {
@@ -44,5 +46,12 @@
     "SearchCurrenciesNoneFound": "No matching currencies found",
     "UiScaleLabel": "UI Scale",
     "UiScaleDescription": "Change the size of the UI to be larger or smaller."
+  },
+
+  "AssetConfirmation": {
+    "Title": "Delete Asset",
+    "Description": "Are you sure you want to delete this asset?",
+    "ConfirmButtonLabel": "Delete",
+    "CancelButtonLabel": "Cancel"
   }
 }
