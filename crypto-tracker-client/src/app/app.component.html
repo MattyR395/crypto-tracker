@@ -5,37 +5,18 @@
     <nav class="c-header__nav" [class.is-open]="isSideNavOpen">
       <ul>
         <li>
-          <a routerLink="/" routerLinkActive="is-active">{{ 'Nav.Portfolio' | translate }}</a>
+          <button mat-icon-button (click)="openSettingsDialog()" [matTooltip]="'Shared.Settings' | translate">
+            <mat-icon>settings</mat-icon>
+          </button>
+        </li>
+        <li>
+          <button mat-icon-button (click)="auth.logout({ returnTo: document.location.origin })"
+            [matTooltip]="'Shared.Logout' | translate">
+            <mat-icon>logout</mat-icon>
+          </button>
         </li>
       </ul>
-
-      <button class="c-header__profile" [matMenuTriggerFor]="profileMenu" [title]="'Nav.ProfileButtonLabel' | translate"
-        [attr.aria-label]="'Nav.ProfileButtonLabel' | translate">
-        <img *ngIf="auth.user$ | async as user" [src]="user.picture" alt="">
-      </button>
-
-      <mat-menu #profileMenu="matMenu" xPosition="before">
-        <button mat-menu-item (click)="openSettingsDialog()">
-          <mat-icon>settings</mat-icon>
-          <span>{{ 'Shared.Settings' | translate }}</span>
-        </button>
-        <button mat-menu-item (click)="auth.logout({ returnTo: document.location.origin })">
-          <mat-icon>logout</mat-icon>
-          <span>{{ 'Shared.Logout' | translate }}</span>
-        </button>
-      </mat-menu>
     </nav>
-
-    <div class="c-header__overlay is-open" id="slideoutOverlay" [class.is-open]="isSideNavOpen"
-      (click)="closeSideNav()"></div>
-
-    <button class="c-hamburger" (click)="toggleSideNav()" [class.is-open]="isSideNavOpen">
-      <div class="c-hamburger__bars">
-        <div></div>
-      </div>
-      {{ 'Nav.MenuButtonLabel' | translate }}
-    </button>
-
   </div>
 </header>
 

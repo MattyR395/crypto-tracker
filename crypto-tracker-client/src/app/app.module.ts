@@ -19,7 +19,6 @@ import { HoldingReducer } from './state/reducers/holding.reducer';
 import { AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { SettingsEffects } from './state/effects/settings.effects';
@@ -27,13 +26,14 @@ import { SettingsReducer } from './state/reducers/settings.reducer';
 import { SettingsDialogModule } from './shared/components/settings-dialog/settings-dialog.module';
 import { AddAssetDialogModule } from './shared/components/add-asset-dialog/add-asset-dialog.module';
 import { ConfirmDialogModule } from './shared/components/confirm-dialog/confirm-dialog.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const matModules = [
   MatButtonModule,
   MatIconModule,
-  MatMenuModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatTooltipModule
 ]
 
 @NgModule({
