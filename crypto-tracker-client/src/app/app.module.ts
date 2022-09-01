@@ -26,7 +26,7 @@ import { SettingsEffects } from './state/effects/settings.effects';
 import { SettingsReducer } from './state/reducers/settings.reducer';
 import { SettingsDialogModule } from './shared/components/settings-dialog/settings-dialog.module';
 import { AddAssetDialogModule } from './shared/components/add-asset-dialog/add-asset-dialog.module';
-import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogModule } from './shared/components/confirm-dialog/confirm-dialog.module';
 
 const matModules = [
   MatButtonModule,
@@ -38,8 +38,7 @@ const matModules = [
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ConfirmDialogComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +48,7 @@ const matModules = [
     BrowserAnimationsModule,
     AddAssetDialogModule,
     HttpClientModule,
+    ConfirmDialogModule,
     StoreModule.forRoot({
       fiatCurrencies: FiatCurrencyReducer,
       tokens: TokenReducer,

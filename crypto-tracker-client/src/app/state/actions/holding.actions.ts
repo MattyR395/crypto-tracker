@@ -16,3 +16,7 @@ export const addHoldingSuccess = createAction('[Holdings] Add Holding Success', 
 export const deleteHolding = createAction('[Holdings] Delete Holding', props<{ holdingId: number }>());
 export const deleteHoldingError = createAction('[Holdings] Delete Holding Error');
 export const deleteHoldingSuccess = createAction('[Holdings] Delete Holding Success', props<{ holdingId: number }>());
+
+export const editHolding = createAction('[Holdings] Edit Holding', props<{ holding: Holding }>());
+export const editHoldingError = createAction('[Holdings] Edit Holding Error');
+export const editHoldingSuccess = createAction('[Holdings] Edit Holding Success', props<{ holding: Holding }>());

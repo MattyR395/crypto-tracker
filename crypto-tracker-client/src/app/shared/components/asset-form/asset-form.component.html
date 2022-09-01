@@ -1,0 +1,47 @@
+<form class="c-add-asset-form" [formGroup]="assetForm" (submit)="submitassetForm()">
+
+  <div class="c-add-asset-form__token">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'Home.AddAsset.TokenInputLabel' | translate }}</mat-label>
+      <mat-select cdkFocusInitial #tokenSelect formControlName="cryptoToken">
+        <mat-option>
+          <ngx-mat-select-search [formControl]="cryptoTokenFilterCtrl"
+            [placeholderLabel]="'Shared.Search' | translate"
+            [noEntriesFoundLabel]="'Home.SearchTokensNoneFound' | translate">
+          </ngx-mat-select-search>
+        </mat-option>
+
+        <mat-option *ngFor="let token of filteredCryptoTokens$ | async; trackBy: tokenTrackByFn" [value]="token.id">
+          {{ token.name }}
+
+          <ng-container *ngIf="token.name !== token.symbol">({{ token.symbol }})</ng-container>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="c-add-asset-form__token__amount">
+      <mat-label>{{ 'Home.AddAsset.AmountInputLabel' | translate }}</mat-label>
+      <input matInput type="number" formControlName="cryptoAmount">
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'Home.AddAsset.CostInputLabel' | translate: { currencySymbol: settings?.fiatCurrency } }}</mat-label>
+    <input matInput type="number" formControlName="amountPaid">
+    <span *ngIf="currentFiatCurrency && currentFiatCurrency.currencySymbol.length" matPrefix>{{
+      currentFiatCurrency.currencySymbol }}&nbsp;</span>
+    <mat-hint>{{ 'Shared.OptionalField' | translate }}</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'Home.AddAsset.DateAquiredInputLabel' | translate }}</mat-label>
+    <input matInput [matDatepicker]="aquiredDatePicker" formControlName="dateAquired">
+    <mat-datepicker-toggle matSuffix [for]="aquiredDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #aquiredDatePicker></mat-datepicker>
+    <mat-hint>{{ 'Shared.OptionalField' | translate }}</mat-hint>
+  </mat-form-field>
+
+  <!-- This hidden submit button allows the form to be submitted by pressing enter. -->
+  <button type="submit" style="display:none" aria-hidden="true"></button>
+</form>
+

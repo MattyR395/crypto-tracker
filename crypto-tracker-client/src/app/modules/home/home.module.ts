@@ -11,6 +11,7 @@ import { AssetCardComponent } from './asset-card/asset-card.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { EditAssetDialogModule } from 'src/app/shared/components/edit-asset-dialog/edit-asset-dialog.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatMenuModule } from '@angular/material/menu';
     CurrencyChangeModule,
     TranslateModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    EditAssetDialogModule
   ]
 })
 export class HomeModule { }

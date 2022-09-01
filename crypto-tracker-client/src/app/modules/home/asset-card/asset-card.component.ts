@@ -7,6 +7,9 @@ import { selectTokens } from 'src/app/state/selectors/token.selectors';
 import { UserMessagingService } from 'src/app/shared/services/user-messaging/user-messaging.service';
 import { TranslateService } from '@ngx-translate/core';
 import { deleteHolding } from 'src/app/state/actions/holding.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { EditAssetDialogComponent } from 'src/app/shared/components/edit-asset-dialog/edit-asset-dialog.component';
+import { Holding } from '@models/holding.model';
 
 @Component({
   selector: 'app-asset-card',
@@ -29,6 +32,7 @@ export class AssetCardComponent {
     private store: Store<AppState>, 
     private userMessagingService: UserMessagingService,
     private translateService: TranslateService,
+    private dialog: MatDialog
   ) {
     this.store.select(selectTokens).subscribe((tokens: TokensState) => this.cryptoTokens = tokens.items);
   }
@@ -48,5 +52,16 @@ export class AssetCardComponent {
         this.store.dispatch(deleteHolding({ holdingId: this.asset.id }));
       }
     });
+  }
+
+  /**
+   * Opens the edit asset dialog.
+   */
+  openEditAssetDialog(holding: Holding): void {
+    this.dialog.open(EditAssetDialogComponent, {
+      maxWidth: '30rem',
+      width: '100%',
+      data: holding
+    })
   }
 }

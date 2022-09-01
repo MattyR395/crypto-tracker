@@ -29,4 +29,13 @@ export class HoldingService {
   deleteHolding(holdingId: number): Observable<unknown> {
     return this.http.delete(`${environment.apiUrl}/holdings/${holdingId}`);
   }
+
+  /**
+   * Sends a request to edit the given holding with the provided data.
+   * @param holding A Holding containing the new data and the ID of the holding to edit.
+   * @returns Observable of the server response.
+   */
+  editHolding(holding: Holding): Observable<Holding> {
+    return this.http.patch<Holding>(`${environment.apiUrl}/holdings/${holding.id}`, holding);
+  }
 }

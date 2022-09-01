@@ -12,11 +12,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker'; 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
-
+import { AssetFormModule } from '../asset-form/asset-form.module';
 
 @NgModule({
   declarations: [
-    AddAssetDialogComponent
+    AddAssetDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatIconModule
+    MatIconModule,
+    AssetFormModule
   ],
   exports: [
     AddAssetDialogComponent

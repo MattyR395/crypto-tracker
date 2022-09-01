@@ -55,8 +55,19 @@ export class HoldingsService {
     return `This action returns a #${id} holding`;
   }
 
-  update(id: number, updateHoldingDto: UpdateHoldingDto) {
-    return `This action updates a #${id} holding`;
+  async update(id: number, updateHoldingDto: UpdateHoldingDto) {
+    let newHolding: any = {
+      tokenId: updateHoldingDto.tokenId,
+      amount: updateHoldingDto.amount,
+      paidUsd: updateHoldingDto.paidUsd
+    }
+
+    // If a date was provided, add it to the query.
+    if (updateHoldingDto.dateAquired) {
+      newHolding.dateAquired = new Date(updateHoldingDto.dateAquired);
+    }
+
+    return (await this.holdingsRepository.update(id, newHolding)).affected > 0;
   }
 
   async remove(id: number) {

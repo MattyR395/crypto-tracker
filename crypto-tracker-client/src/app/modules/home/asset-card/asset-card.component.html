@@ -16,7 +16,7 @@
   </button>  
 
   <mat-menu #actionsMenu="matMenu" xPosition="before">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="openEditAssetDialog(asset)">
       <mat-icon>edit</mat-icon>
       <span>{{ 'Shared.Edit' | translate }}</span>
     </button>

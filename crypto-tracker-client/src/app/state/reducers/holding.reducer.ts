@@ -1,4 +1,4 @@
-import { addHoldingSuccess, deleteHoldingSuccess, loadHoldings, loadHoldingsError, loadHoldingsSuccess } from "../actions/holding.actions"
+import { addHoldingSuccess, deleteHoldingSuccess, editHoldingSuccess, loadHoldings, loadHoldingsError, loadHoldingsSuccess } from "../actions/holding.actions"
 import { Action, createReducer, on } from '@ngrx/store';
 import { HoldingsState } from "../app.state";
 
@@ -16,7 +16,9 @@ const reducer = createReducer(
 
   on(addHoldingSuccess, (state, action) => ({ ...state, items: [...state.items, action.holding] })),
 
-  on(deleteHoldingSuccess, (state, action) => ({ ...state, items: state.items.filter(holding => holding.id !== action.holdingId) }))
+  on(deleteHoldingSuccess, (state, action) => ({ ...state, items: state.items.filter(holding => holding.id !== action.holdingId) })),
+
+  on(editHoldingSuccess, (state, action) => ({ ...state, items: state.items.map(holding => holding.id === action.holding.id ? action.holding : holding) }))
 );
 
 export function HoldingReducer(state: HoldingsState | undefined, action: Action) {
