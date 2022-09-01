@@ -61,7 +61,17 @@ const matModules = [
       HoldingEffects,
       SettingsEffects
     ]),
-    AuthModule.forRoot(environment.auth),
+    AuthModule.forRoot({
+      ...environment.auth,
+
+      redirectUri: window.location.origin,
+      httpInterceptor: {
+        allowedList: [`${environment.apiUrl}/*`],
+      },
+
+      // Helps to bypass strict browser privacy settings.
+      cacheLocation: 'localstorage'
+    }),
     TranslateModule.forRoot({ 
       loader: { 
         provide: TranslateLoader, 

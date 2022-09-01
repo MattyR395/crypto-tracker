@@ -8,12 +8,7 @@ export const environment = {
   auth: {
     domain: 'dev-5j7zzyze.eu.auth0.com',
     clientId: 'BMIncmaVHNrdhj9MH06ZHtRkxJIg7yw5',
-    audience: "https://localhost:3000",
-    redirectUri: window.location.origin,
-
-    httpInterceptor: {
-      allowedList: ['http://localhost:3000/*'],
-    },
+    audience: "https://localhost:3000"
   }
 };
 /*

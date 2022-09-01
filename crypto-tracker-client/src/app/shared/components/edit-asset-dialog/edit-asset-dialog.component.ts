@@ -47,7 +47,6 @@ export class EditAssetDialogComponent {
   }
 
   submitEditAssetForm(): void {
-    console.log(this.holding.id, this.formValues);
     this.store.dispatch(editHolding({ holding: {
       id: this.holding.id,
       tokenId: this.formValues!.tokenId,
