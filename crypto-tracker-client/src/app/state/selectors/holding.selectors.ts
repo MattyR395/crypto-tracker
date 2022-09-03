@@ -5,7 +5,7 @@ import { Holding } from "@models/holding.model";
 
 export const selectHoldings = (state: AppState) => state.holdings;
 
-export const areHoldingsLoading = createSelector(
+export const selectAreHoldingsLoading = createSelector(
   selectHoldings,
   (state: HoldingsState) => state.isLoading
 );

@@ -36,6 +36,11 @@
     },
     "EditAsset": {
       "DialogTitle": "Edit Asset"
+    },
+    "EmptyState": {
+      "Title": "No Assets!",
+      "Description": "Your portfolio is empty! Add your first asset by clicking the button below.",
+      "AddAssetButtonLabel": "Add Asset"
     }
   },
 

@@ -13,7 +13,7 @@ export const selectFiatRate = (symbol: string) => createSelector(
   (state: FiatCurrenciesState) => state.items.find(c => c.symbol === symbol)
 );
 
-export const areFiatCurrenciesLoading = createSelector(
+export const selectAreFiatCurrenciesLoading = createSelector(
   selectFiatCurrencies,
   (state: FiatCurrenciesState) => state.isLoading
 );

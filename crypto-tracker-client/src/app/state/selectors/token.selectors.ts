@@ -3,7 +3,7 @@ import { createSelector } from '@ngrx/store';
 
 export const selectTokens = (state: AppState) => state.tokens;
 
-export const areTokensLoading = createSelector(
+export const selectAreTokensLoading = createSelector(
   selectTokens,
   (state: TokensState) => state.isLoading
 );

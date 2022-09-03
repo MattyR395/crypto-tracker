@@ -1,0 +1,46 @@
+@import 'src/assets/scss/functions/color';
+
+:host {
+  display: grid;
+  justify-content: center;
+  padding-top: 6rem;
+}
+
+.c-empty-state {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+  &__title, &__desc {
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+
+  &__desc {
+    color: color("bg-subtext");
+  }
+
+  &__icon > * {
+    $icon-size: 8rem;
+
+    width: $icon-size;
+    height: $icon-size;
+    font-size: $icon-size;
+
+    color: color("bg-subtext");
+  }
+
+  &__actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: var(--gap-sm);
+  }
+
+  &__action {
+    min-width: 8rem;
+  }
+}

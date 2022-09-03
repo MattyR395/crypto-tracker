@@ -12,6 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { EditAssetDialogModule } from 'src/app/shared/components/edit-asset-dialog/edit-asset-dialog.module';
+import { EmptyStateModule } from 'src/app/shared/components/empty-state/empty-state.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EditAssetDialogModule } from 'src/app/shared/components/edit-asset-dial
     TranslateModule,
     MatDialogModule,
     MatMenuModule,
-    EditAssetDialogModule
+    EditAssetDialogModule,
+    EmptyStateModule
   ]
 })
 export class HomeModule { }

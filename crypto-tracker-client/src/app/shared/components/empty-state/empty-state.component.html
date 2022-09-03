@@ -1,0 +1,23 @@
+<div class="c-empty-state" [style.max-width]="maxWidth">
+  <div class="c-empty-state__icon">
+    <mat-icon>{{ icon }}</mat-icon>
+  </div>
+
+  <h2 class="c-empty-state__title">{{ title }}</h2>
+  <p class="c-empty-state__desc">{{ subText }}</p>
+
+  <div class="c-empty-state__actions" *ngIf="actions.length" [style.flex-direction]="verticalActions ? 'column' : null">
+    <ng-container *ngFor="let action of actions">
+
+      <a *ngIf="action.route" class="c-empty-state__action" mat-raised-button color="primary"
+        [routerLink]="action.route">
+        {{ action.title }}
+      </a>
+
+      <button *ngIf="!action.route" class="c-empty-state__action" mat-stroked-button color="primary"
+        (click)="actionClick.emit(action.actionName)">
+        {{ action.title }}</button>
+
+    </ng-container>
+  </div>
+</div>
