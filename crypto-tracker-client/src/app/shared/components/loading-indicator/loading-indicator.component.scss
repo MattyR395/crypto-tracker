@@ -1,0 +1,63 @@
+@import 'src/assets/scss/functions/color';
+
+:host {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+
+  justify-content: center;
+  
+  user-select: none;
+  pointer-events: none;
+  transition: .2s;
+}
+
+$animation-duration: 1.8s;
+
+.loader {
+  position: absolute;
+  top: 20rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 10px;
+  background: color("primary");
+  border-radius: 5px;
+  animation: load $animation-duration ease-in-out infinite; 
+  &:before, &:after {
+    position: absolute; 
+    display: block;
+    content: "";
+    animation: load $animation-duration ease-in-out infinite;
+    height: 10px;
+    border-radius: 5px;
+  }
+    &:before {
+    top: -20px;
+    left: 10px;
+    width: 40px;
+    background: color("secondary");
+  }
+  &:after {
+    bottom: -20px;
+    width: 35px;
+    background: color("secondary");
+  }
+}
+
+@keyframes load {
+  0% {
+    transform: translateX(40px);
+  }
+  
+  50% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(40px);
+  }
+}
+

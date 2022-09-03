@@ -27,6 +27,7 @@ import { SettingsDialogModule } from './shared/components/settings-dialog/settin
 import { AddAssetDialogModule } from './shared/components/add-asset-dialog/add-asset-dialog.module';
 import { ConfirmDialogModule } from './shared/components/confirm-dialog/confirm-dialog.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { LoadingDirective } from './shared/directives/loading.directive';
 
 const matModules = [
   MatButtonModule,
@@ -38,7 +39,8 @@ const matModules = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoadingDirective
   ],
   imports: [
     BrowserModule,

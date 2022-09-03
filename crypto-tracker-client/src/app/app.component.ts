@@ -12,6 +12,9 @@ import { loadSettings } from './state/actions/settings.actions';
 import { TranslateService } from '@ngx-translate/core';
 import { SettingsService } from './shared/services/settings/settings.service';
 import { selectSettings } from './state/selectors/settings.selectors';
+import { selectAreHoldingsLoading } from './state/selectors/holding.selectors';
+import { selectAreFiatCurrenciesLoading } from './state/selectors/fiat-currency.selectors';
+import { selectAreTokensLoading } from './state/selectors/token.selectors';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +25,14 @@ export class AppComponent implements OnInit {
   title = 'crypto-tracker-client';
 
   isSideNavOpen: boolean = false;
+
+  areTokensLoading: boolean = true;
+  areAssetsLoading: boolean = true;
+  areFiatCurrenciesLoading: boolean = true;
+
+  get isLoading(): boolean {
+    return this.areAssetsLoading || this.areFiatCurrenciesLoading || this.areTokensLoading;
+  }
 
   constructor(
     private store: Store<AppState>,
@@ -70,5 +81,11 @@ export class AppComponent implements OnInit {
       this.settingsService.setTheme(settings.themeId);
       this.settingsService.setUiScale(settings.uiScaleId);
     })
+
+    // Get all the loading states.
+    this.store.select(selectAreHoldingsLoading).subscribe(areHoldingsLoading => this.areAssetsLoading = areHoldingsLoading);
+    this.store.select(selectAreFiatCurrenciesLoading)
+      .subscribe(areFiatCurrenciesLoading => this.areFiatCurrenciesLoading = areFiatCurrenciesLoading);
+    this.store.select(selectAreTokensLoading).subscribe(areTokensLoading => this.areTokensLoading = areTokensLoading);
   }
 }
