@@ -44,7 +44,7 @@ $overview-details-gap: var(--gap-md);
           transform: translateY(-50%);
           background-color: color("bg-divider");
           position: absolute;
-          inset-inline-start: calc(((#{$overview-details-gap} * -1) * .5) - #{$width / 2});     
+          inset-inline-start: calc(((#{$overview-details-gap} * -1) * .5) - #{$width } / 2);     
         }
       }
     }

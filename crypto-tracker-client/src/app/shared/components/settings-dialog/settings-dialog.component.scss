@@ -35,7 +35,7 @@ $divider-width: 2px;
       width: 100%;
       background-color: color("bg-divider");
       position: absolute;
-      inset-block-start: calc(((#{$items-gap} * -1) * .5) - #{$divider-width / 2});     
+      inset-block-start: calc(((#{$items-gap} * -1) * .5) - #{$divider-width} / 2);     
     }
 
     // Position the labels above their inputs on small screens.
