@@ -140,7 +140,7 @@ export class AssetFormComponent implements OnInit {
         this.valueChange.emit({
           tokenId: changes.cryptoToken,
           amount: parseFloat(changes.cryptoAmount!),
-          paidUsd: parseFloat(changes.amountPaid!),
+          paidUsd: this.convertToUsd(parseFloat(changes.amountPaid!)),
           dateAquired: changes.dateAquired ?? undefined,
         })  
       }
@@ -163,6 +163,19 @@ export class AssetFormComponent implements OnInit {
       }
   
       this.assetForm.patchValue(defaultValues);  
+    }
+  }
+
+  /**
+   * Converts the entered amount paid from the current fiat currency to USD.
+   * @param amount Amount in the user selected fiat currency.
+   * @returns Amount in USD.
+   */
+  convertToUsd(amount: number): number {
+    if (this.currentFiatCurrency) {
+      return amount * this.currentFiatCurrency.rateUsd;
+    } else {
+      throw new Error('No fiat currency rate found.');
     }
   }
 
