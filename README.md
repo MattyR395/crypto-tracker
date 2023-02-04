@@ -15,7 +15,7 @@ A simple CRUD app for managing finances using the [Coincap](https://docs.coincap
 - Secure authentication using [Auth0](https://auth0.com/)
 
 ## Technical info
-Built using Angular 13 and (NestJS)[https://nestjs.com/], using [Auth0](https://auth0.com/) for authentication, (NgRx)[https://ngrx.io/] for state management and (Angular Material)[https://v13.material.angular.io/] for form controls and buttons.
+Built using Angular 13 and [NestJS](https://nestjs.com), using [Auth0](https://auth0.com/) for authentication, [NgRx](https://ngrx.io/) for state management and [Angular Materia](https://v13.material.angular.io/) for form controls and buttons.
 
 The other components and SCSS themes are built by hand!
 
